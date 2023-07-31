@@ -1,0 +1,20 @@
+.active-item-holder{
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: 600;
+    margin-top: .3rem;
+    padding: .2rem;
+}
+.active-item-holder > .connection-active{
+    border-bottom:2px solid var(--primary-color) ;
+}
+.active-item-holder > p{
+    width: 30%;
+    text-align: center;
+    padding-bottom: .3rem;
+    cursor: pointer;
+
+}
+.m-width100{
+    max-width: 100%;
+}

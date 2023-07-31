@@ -1,0 +1,44 @@
+.Register-modal{
+    max-width: 800px;
+
+}
+.m-height{
+    max-height: 500px;
+    overflow-y: scroll;
+}
+.employee-count{
+    padding: .3rem;
+    gap: .4rem;
+    margin: .2rem 0;
+    align-items: center;
+}
+.employee-count > input{
+    padding: 0 .3rem;
+}
+.employee-count > input:focus{
+    outline: none;
+}
+.lock-parent{
+    position: relative;
+    width: 100%;
+    padding: .2rem;
+}
+.lock-parent > input{
+    width: 95%;
+}
+.lock-parent > input:focus{
+    outline: none;
+}
+.rel-holder{
+    padding: 0.5rem;
+    width: 94.2%;
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    border-top: none;
+}
+.s-holder{
+    padding-bottom: .3rem;
+    cursor: pointer;
+}
+

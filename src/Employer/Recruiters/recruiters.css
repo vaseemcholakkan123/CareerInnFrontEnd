@@ -1,0 +1,19 @@
+
+.job-table{
+    background-color: white;
+    padding: 0 .8rem;
+    padding-top: .7rem;
+}
+@media (max-width:792px) {
+    .job-table{
+        padding: .3rem .4rem;
+    }
+}
+.job-card{
+    display: flex;
+    padding: .3rem;
+    gap: .8rem;
+}
+.detail-svg{
+    margin-top: .5rem;
+}

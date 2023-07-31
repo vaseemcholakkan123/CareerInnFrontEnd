@@ -1,0 +1,96 @@
+.profile-main-container{
+    background-color: inherit;
+    border-radius: 7px;
+    padding: .3rem 0;
+    margin-top: .3rem;
+}
+.banner{
+    background: 50%/cover;
+    width: 100%;
+    height: 170px;
+    position: relative;
+}
+.banner-edit-svg{
+    position: absolute;
+    right: 28px;
+    top: 25px;
+
+}
+.user-prof{
+    position: absolute;
+    top: 60px;
+    left: 31px;
+}
+@media (min-width:672px) {
+    .user-main-holder{
+        padding-left: 2.3rem !important;
+    }
+}
+
+.banner-user-container{
+    border-radius: 7px;
+    overflow: hidden;
+}
+.user-main-holder{
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    padding-top: 42px !important;
+    display: flex;
+    align-items: center;
+}
+.connections-info{
+    display: flex;
+    padding: .3rem .5rem;
+}
+.a{
+    fill:none;
+    stroke:#000000;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+.info{
+    cursor: pointer;
+}
+.info:hover > p{
+    font-weight: 600;
+}
+.btn-3{
+    cursor: pointer;
+    padding: .3rem .3rem;
+    border-radius: 12px;
+}
+.btn-3:hover{
+    background-color: var(--primary-blue-gray);
+}
+.profile-modal{
+    max-width: 620px;
+}
+.profile-drop{
+    transform: translate3d(574.2px, 143.2px, 0px) !important;
+}
+.info-modal{
+    padding-top: 0 !important;
+    max-height: 450px;
+    overflow-y: scroll;
+    -webkit-scrollbar {
+        display: none;
+    }
+}
+.input-infos > p{
+    color: gray;
+
+}
+.input-infos > input{
+    margin-top: .2rem;
+    margin-left: .2rem;
+    width: 95%;
+    padding: .2rem;
+}
+.input-infos > input:focus{
+    outline: none;
+}
+.input-infos{
+    padding-left: .3rem;
+    padding-top: .4rem;
+}
+

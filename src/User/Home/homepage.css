@@ -1,0 +1,54 @@
+.user-home-container{
+    padding: .4rem 8rem;
+    padding-left: 2rem;
+}
+.mh-5{
+    max-height: 288px;
+    overflow-y: scroll;
+}
+
+.col-inside{
+    margin: 0 auto;
+    padding: .3rem .2rem;
+    width: 90%;
+    background-color: white;
+    border-radius: 3px;
+}
+.main-div{
+    height: calc(100vh - 72px);
+    overflow-y: scroll;
+    background-color: var(--primary-gray);
+    box-shadow: none !important;
+    padding-top: 0 !important;
+}
+@media (max-width:690px) {
+    .user-home-container{
+        padding: .1rem 0rem !important;
+    }
+    .posts-container{
+        background-color: white;
+
+    }
+    .col-inside{
+        width: 100%;
+    }
+    .main-div{
+        box-shadow: none;
+    }
+    .left{
+        width: 100% !important;
+    }
+    
+}
+@media (max-width:1310px) {
+    .show2{
+        display: none !important;
+    }
+    .user-home-container{
+        padding: .3rem 2rem;
+    }
+   
+}
+.left{
+    width: 70% ;
+}

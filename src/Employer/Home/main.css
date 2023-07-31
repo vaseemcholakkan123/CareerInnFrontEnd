@@ -1,0 +1,29 @@
+.employee-sidebar{
+    font-family: var(--app-font);
+    background-color: var(--primary-color2);
+    color: white;
+    padding: 0 .5rem;
+    min-height: calc(100vh - 56px);
+}
+.app-color{
+    color: var(--primary-color);
+}
+.side-item{
+    display: flex;
+    padding: .4rem .6rem;
+    margin-left: .2rem;
+    gap: .3rem;
+    align-items: center;
+    cursor: pointer;
+    margin-top: .3rem;
+}
+.sidebar-container{
+    margin-left: .15rem;
+}
+.side-item:hover{
+    background-color: var(--primary-color3);
+}
+.active{
+    background-color: var(--primary-color3);
+    padding-left: 1rem;
+}

@@ -1,0 +1,34 @@
+.company-main{
+    background-color: white;
+    color: black;
+    padding-bottom: 6rem;
+}
+.banner-company{
+    max-width: 100%;
+}
+.holder{
+    position: relative;
+    max-width: 100%;
+}
+.company-logo{
+    position: absolute;
+    left: 42px;
+    top: 150px;
+}
+.main-texts-holder{
+    margin-top: 70px;
+    padding: 1rem;
+    margin-left: 1.5rem;
+}
+.gray{
+    color: gray;
+}
+.company-edit{
+    justify-content: flex-end;
+    padding: 0 1rem;
+    padding-top: .8rem;
+    gap: .8rem;
+    font-size: large;
+    font-weight: 500;
+    cursor: pointer;
+}

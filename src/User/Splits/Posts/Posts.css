@@ -1,0 +1,150 @@
+.post-content{
+    background-color: white;
+    display: flex;
+    gap: 10px;
+    padding: .5rem .6rem;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 7px;
+}
+.report-input{
+    min-width: 90%;
+    margin-top: .8rem;
+    margin-left: 0;
+    padding: .2rem .4rem;
+    outline: none !important;
+}
+.like-input{
+    width: 100%;
+    background-color: white;
+    margin-left: -10px;
+    padding: .9rem .7rem;
+    height: 100%;
+    border: 1px solid gray;
+    border-radius: 26px;
+    margin-right: 10px;
+}
+.also-input{
+    margin-left: .1rem ;
+    padding: .4rem .1rem;
+    width: -webkit-fill-available;
+
+}
+.like-input > p{
+    margin-left: 5px;
+}
+
+.posted-user-holder{
+    display: flex;
+    align-items: center;
+    padding: .3rem .8rem;
+    padding-top: .6rem;
+}
+.post{
+    width: 100%;
+    object-fit: contain;
+}
+.post-card{
+    background-color: white;
+}
+@media (min-width:500px) {
+    .post-card{
+        border-radius: 12px;
+    }
+}
+.actions-holder{
+    margin-top: .3rem;
+    padding: 0 1rem;
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+}
+.action{
+    padding: .4rem 0;
+    display: flex;
+    gap: 5px;
+    width: 50%;
+    justify-content: center;
+    border-radius: 7px;
+    margin-bottom: .2rem;
+    cursor: pointer;
+}
+.action:hover{
+    background-color: var(--primary-blue-gray);
+}
+.follow{
+    margin-right: 1rem;
+    cursor: pointer;
+    padding: .5rem;
+    border-radius: 7px;
+}
+.follow:hover{
+    background-color: var(--primary-blue-gray);
+}
+.comment{
+    display: flex;
+    padding: .3rem .5rem;
+}
+.comment-text{
+    border-radius: 7px;
+    padding: .4rem .5rem;
+    background-color: var(--primary-blue-gray);
+}
+.post-modal{
+    padding: .3rem .9rem !important;
+    background-color: var(--primary-blue-gray);
+    min-height: 150px;
+    position: relative;
+}
+.post-modal > textarea{
+    outline: none;
+    background-color: inherit;
+    border-radius: 7px;
+    font-family: var(--app-font);
+    font-weight: 600;
+    border:none
+}
+.post-modal > .svg { 
+    fill: var(--primary-color);
+    position: absolute;
+    right: 18px;
+    top: 8px;
+    cursor: pointer;
+    border-radius: 9px;
+    background-color: inherit;
+    padding: .3rem;
+}
+.svg:hover p,.svg:hover{
+    background-color: white;
+    display: block;
+}
+.svg p {
+    display: none;
+}
+.post-btn{
+    border:none;
+    cursor: pointer;
+    font-family: var(--app-font);
+    font-weight: 600;
+    background-color: inherit;
+}
+.post-btn:hover{
+    border-bottom: 1px solid var(--primary-color);
+}
+.post-content-text > a{
+    text-decoration: none;
+    color: blue;
+    font-weight: 600;
+    font-family: var(--app-font);
+    cursor: pointer;
+}
+.post-content-text > a:hover{
+    text-decoration: underline;
+}
+
+.app-blue-gray{
+    background-color: var(--primary-blue-gray);
+    border-radius: 8px;
+}
+
+

@@ -1,0 +1,20 @@
+.posts-right{
+    padding: .2rem .7rem;
+
+}
+ul{
+    padding-inline-start: 1.3rem;
+    margin-top: .5rem;
+}
+li{
+    word-break:break-all;
+    margin-bottom: .2rem;
+}
+.news-holder{
+    margin-top: .3rem;
+    max-height: 200px;
+    overflow-y: scroll;
+}
+.hider-infos{
+    background-color: var(--primary-gray);
+}

@@ -1,0 +1,121 @@
+.main-navbar{
+    padding: .5rem 1.5rem ;
+    position: fixed;
+    width: 100%;
+    padding-bottom: 0;
+    display: flex;
+    background-color: white;
+    z-index: 1;
+}
+.offset{
+    height: 59px;
+}
+.nav-items{
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    gap: 1rem;
+}
+.nav-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: small;
+    border-bottom: 1px solid white;
+}
+.nav-item > svg{
+    fill: rgb(89, 89, 89);
+}
+.nav-item-active{
+    border-bottom: 2px solid var(--primary-color);
+}
+.user-on-nav{
+    margin-top: -1.9px;
+    position: relative;
+    cursor: pointer;
+}
+.user-on-nav > .drop-1 > p ,.nav-item > p,.nav-title,.nav-item,.nav-items{
+    cursor: pointer;
+}
+.user-on-nav:hover > .drop-1 > p ,.nav-item:hover > p,.nav-title:hover,.my-dropdown-item > p:hover{
+    font-weight: 600;
+}
+.my-dropdown{
+    width: max-content;
+    padding: .3rem 1rem;
+    position: absolute;
+    background-color: white;
+    border-radius: 3px;
+    top: 100%;
+    right: 0;
+}
+/* .my-dropdown::before{
+    content: "";
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 0;
+} */
+.user-profile{
+    display: flex;
+    align-items: center;
+}
+.user-profile > img{
+    margin-left: -3px;
+}
+.my-dropdown-item{
+    margin: .3rem 0;
+}
+.search-navbar{
+    margin-top: 6px;
+    display: flex;
+    gap: 1px;
+    align-items: center;
+    margin-left: 8px;
+    height: min-content;
+    padding: .2rem .5rem;
+    border-radius: 3px;
+    background-color: var(--primary-blue-gray);
+}
+.nav-title{
+    margin-top: 7px;
+}
+.nav-search{
+    margin-left: 4px;
+    border: none;
+    background-color: var(--primary-blue-gray);
+}
+@media (max-width:690px) {
+    .search-navbar{
+        display: none;
+    }
+    .search-medium{
+        display: block !important;
+    }
+    .nav-items{
+        margin: 0 0 0 auto;
+    }
+
+    .main-navbar{
+        padding: .3rem .8rem;
+        /* background-color: var(--primary-blue-gray); */
+    }
+    .search-medium > svg{
+        margin-left: .4rem;
+    }
+}
+.search-medium{
+    width: 95%;
+    margin-top: .1rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+}
+
+.nav-search:focus .search-navbar{
+    border: 1px solid var(--primary-color);
+}
+.nav-search:focus{
+    outline: none;
+}

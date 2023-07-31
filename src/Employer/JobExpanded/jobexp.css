@@ -1,0 +1,35 @@
+.user-card{
+    padding: .9rem;
+    display: flex;
+    gap: .3rem;
+    align-items: center;
+}
+.main-card{
+    width: max-content;
+    background-color: var(--primary-blue-gray);
+}
+.main-card > p{
+    text-align: center;
+}
+.job-desc{
+    width: 75%;
+}
+@media (max-width:750px) {
+    .job-desc{
+        width: 100%;
+    }
+    
+}
+.i-interview{
+    outline:none;
+    padding: .3rem .4rem;
+    min-width: 40%;
+    border :1px solid gray;
+    margin: .5rem;
+    margin-top: .8rem;
+
+}
+.i-interview:focus{
+    outline: none;
+}
+
