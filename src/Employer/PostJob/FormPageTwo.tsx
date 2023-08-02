@@ -300,10 +300,6 @@ function FormPageTwo({ SetActiveFormPage, SetJobForm, job_form, EditJob }: { Set
                             .then(res => {
                                 setTimeout(() => { window.location.href = '/employer' }, 1500)
                             })
-                            .catch(e => {
-                                console.log(e.response);
-
-                            })
 
                 }} >{EditJob ? 'Update Job' : 'Post Job'}</p>
             </div>

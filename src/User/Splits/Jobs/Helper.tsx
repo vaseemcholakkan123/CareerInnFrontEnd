@@ -108,3 +108,11 @@ export async function apply_for_job(form:application_form ,job_id:number,oqs:que
         
     }    
 }
+
+export type filter_type = {
+    department : { title:string,  id:number},
+    skills_contain : {id:number ,title :string}[],
+    work_type : string,
+    work_time : string,
+
+}

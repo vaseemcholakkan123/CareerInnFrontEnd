@@ -42,11 +42,11 @@ function Skills() {
         <div className="d-flex w-100 p-2 pb-0 a-center mt-2">
             <h5>Skills</h5>
 
-            <div className='ms-auto d-flex a-center mt-1 me-1 btn-3'>
+            <div className='ms-auto d-flex a-center mt-1 me-1 btn-3' data-bs-toggle="modal" data-bs-target="#Skillmodal">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" className="mercado-match" width="18" height="18" focusable="false">
                 <path d="M21 13h-8v8h-2v-8H3v-2h8V3h2v8h8z"></path>
                 </svg>
-                <p className="weight-600 ms-2" data-bs-toggle="modal" data-bs-target="#Skillmodal">Add another</p>
+                <p className="weight-600 ms-2" >Add another</p>
 
             </div>
 

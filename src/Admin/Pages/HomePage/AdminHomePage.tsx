@@ -8,6 +8,9 @@ import { check_admin } from '../Helper'
 import { validation } from '../../../User/Splits/Profile/UserProfile/Includes/Projects/Helper'
 import AdminSidebar from '../Sidebar/SideBar'
 import News from '../News/News'
+import Department from '../Department/Department'
+import Reports from '../Reports/Reports'
+import Users from '../Users/Users'
 
 
 function AdminHomePage() {
@@ -40,15 +43,15 @@ function AdminHomePage() {
 
                         : ActiveLayout === 'department' ?
 
-                            <p>department page</p>
+                            <Department />
 
                             : ActiveLayout === 'reports' ?
 
-                                <p>reports page</p>
+                                <Reports />
 
                                 : ActiveLayout === 'users' ?
 
-                                    <p>users Page</p>
+                                    <Users />
 
                                     :
                                     null

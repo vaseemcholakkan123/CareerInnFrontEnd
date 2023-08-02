@@ -46,7 +46,7 @@ function Posts(prop: props) {
     const router = useNavigate()
 
     useEffect(() => {
-        if (user && !user.profile) {
+        if (localStorage.getItem('user') && !user.profile) {
             inform("let's start by adding profile")
             router('/profile')
         }

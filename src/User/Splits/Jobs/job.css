@@ -11,6 +11,13 @@
 
     }
 }
+.job-filter-input{
+    padding: .2rem .4rem;
+    outline: none !important;
+    border-radius: 2px;
+    border: 1px solid gray;
+}
+
 
 .job-card{
     margin: .3rem 0;
@@ -86,15 +93,47 @@
     left: 0;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-    background-color: rgb(255, 255, 255) !important;
+    background-color: white !important;
     position: absolute;
     overflow: hidden;
+    overflow-y: scroll;
     transition:  height .5s ;
     
+}
+.filter-container-body{
+    position: relative;
+}
+.filter-close{
+    position: absolute;
+    font-weight: 700;
+    top: 0;
+    text-align: center;
 }
 .jobs-container {
     position: relative;
 }
 .trigger-height{
     height: 300px;
+}
+
+.skill-card{
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    background-color: green;
+    width: fit-content;
+    padding: .5rem .9rem;
+    color: white;
+    font-family: var(--app-font);
+    border-radius: 14px;
+    cursor: pointer;
+}
+.skill-card:hover{
+    background-color: rgb(9, 167, 9);
+}
+
+.skill-card > svg{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }
