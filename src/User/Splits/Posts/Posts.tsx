@@ -102,7 +102,7 @@ function Posts(prop: props) {
             {
                 url.includes('different') || url.includes('saved') ?
                     null :
-                    <div className="post-content app-shadow">
+                    <div className="post-content app-shadow p-0 p-md-3 d-md-flex d-none">
                         <img className='rounded-circle me-2' height={60} width={60} src={user.profile ? user.profile : default_user_image} alt="prof" />
                         <div className="like-input" ref={modalOpen} data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             <p>Start a Post</p>
@@ -111,8 +111,8 @@ function Posts(prop: props) {
             }
 
             <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex={-1} aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
+                <div className="modal-dialog rezise-phone-modal">
+                    <div className="modal-content resize-modal-content">
                         <div className="modal-header bb-none">
                             <h5 className="modal-title app-font weight-600" id="staticBackdropLabel">Start Writing</h5>
                             <button type="button" ref={modalClose} className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -204,12 +204,12 @@ function Posts(prop: props) {
 
             {
                 url.includes('different') || url.includes('saved') ?
-                <div className="app-shadow bg-white mb-1 p-md-3 d-flex a-center rlt-7">
+                <div className="app-shadow bg-white mb-1 p-md-3 pt-3 ps-2 d-flex a-center rlt-7">
                     <h4 className='ms-1 ms-md-2'>{url.includes('saved') ? 'Saved Posts'  : posts[0] ? `All Posts of ${posts[0].posted_user.username}` : 'All posts'}</h4>
 
                 </div>
                 :
-                <div className="or-1 mt-3 mb-3 w-100"></div>
+                <div className="d-md-block d-none or-1 mt-3 mb-3 w-100"></div>
 
             }
             <div className="posts-holder pb-1">
@@ -242,7 +242,7 @@ function Posts(prop: props) {
 
             {
                 nextUrl != '' ?
-                    <div className="d-flex p-1 a-center  j-center r-7 mt-1 c-pointer" onClick={() => loader(!loadNext)}>
+                    <div className="d-flex p-md-1 pb-2 a-center  j-center r-7 mt-1 c-pointer" onClick={() => loader(!loadNext)}>
                         <p className="app-font">Show More</p>
                         <svg width="17" className='ms-2 sm-mt' height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clipPath="url(#clip0_2_599)">
@@ -277,12 +277,12 @@ function Posts(prop: props) {
                         <div className="modal-body pt-0 m-heigh">
                             <p className='weight-600'>Tell us why are you reporting this post</p>
                             <div className="ms-md-3">
-                                <input type="text" className='report-input' ref={reportContent} />
+                                <input type="text" className='report-input w-100' ref={reportContent} />
                             </div>
 
 
-                            <div className="modal-footer b-none pb-0 mt-5">
-                                <button type="button" className="btn-1" onClick={() => {
+                            <div className="modal-footer b-none pb-0 mt-md-5 mt-3 pe-0">
+                                <button type="button" className="btn-1 pt-md-2 pb-md-2  p-1 pe-3 ps-3" onClick={() => {
                                     report_post_helper(reportPost, reportContent.current!.value).then(() => {
                                         success('Post reported')
                                         Setposts(posts.filter(p => p.id != reportPost))

@@ -28,20 +28,20 @@ function JobExpanded({ job, SetActiveLayout }: { job: job, SetActiveLayout: Disp
     const [modalbody, SetmodalBody] = useState('application')
 
     return (
-        <div className="px-2 pb-3 p-relative">
+        <div className="px-2 pb-md-3 pb-0 p-relative">
 
-            <div className="mb-2 d-flex justify-content-between align-items-center">
+            <div className="mb-2 d-flex justify-content-between align-items-center pt-md-0 pt-3 pb-md-0 pb-1">
 
                 <h2>{job.name}</h2>
                 <div className="d-flex a-center p-1 ps-2 pe-3 ms-auto gap-2 c-pointer" onClick={() => { SetActiveLayout('ls') }}>
-                    <h6>go back</h6>
+                    <h6 className='d-none d-md-block'>go back</h6>
                     <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} data-name="Layer 1" viewBox="0 0 32 32"><path d="M10.19,16.26a1,1,0,0,0-1,0L1.5,20.7a1,1,0,0,0,0,1.73l7.69,4.44a1,1,0,0,0,1.5-.87V23H22A9,9,0,0,0,22,5H9A1,1,0,0,0,9,7H22a7,7,0,0,1,0,14H10.69V17.13A1,1,0,0,0,10.19,16.26Zm-1.5,8L4,21.56l4.69-2.71Z" /></svg>
 
                 </div>
 
             </div>
 
-            <div className='p-2'>
+            <div className='p-md-2 p-0'>
                 <h4 className="weight-600 c-pointer">Details</h4>
                 <div className='mt-1 ms-1'>
 
@@ -81,19 +81,19 @@ function JobExpanded({ job, SetActiveLayout }: { job: job, SetActiveLayout: Disp
                     </div>
 
                     <div className='mb-2'>
-                        <h4>About the job</h4>
+                        <h4 className='resize-heading' >About the job</h4>
                         <p className='p-1' style={{ whiteSpace: 'pre-line' }}>
                             {job.description}
                         </p>
                     </div>
 
                     <div className='mb-2'>
-                        <h4>Responsibilities:</h4>
-                        <ul className='ms-2'>
+                        <h4 className='resize-heading'>Responsibilities:</h4>
+                        <ul className='ms-md-2 ms-0'>
                             {
                                 job.responsibilities.map(rs => {
                                     return (
-                                        <li key={rs.name}>{rs.name}</li>
+                                        <li key={rs.name}><p>{rs.name}</p></li>
                                     )
                                 })
                             }
@@ -102,12 +102,12 @@ function JobExpanded({ job, SetActiveLayout }: { job: job, SetActiveLayout: Disp
                     </div>
 
                     <div className='mb-2'>
-                        <h4>Requirements:</h4>
-                        <ul className='ms-2'>
+                        <h4 className='resize-heading'>Requirements:</h4>
+                        <ul className='ms-md-2 ms-0'>
                             {
                                 job.requirements.map(rs => {
                                     return (
-                                        <li key={rs.name}>{rs.name}</li>
+                                        <li key={rs.name}><p>{rs.name}</p></li>
                                     )
                                 })
                             }
@@ -116,24 +116,20 @@ function JobExpanded({ job, SetActiveLayout }: { job: job, SetActiveLayout: Disp
 
                 </div>
 
-                <div className=''>
-                    <h4 className="weight-600 c-pointer" data-bs-toggle="collapse" data-bs-target="#applicantCollapse">About Company :</h4>
-                    <div className="collapse" id="applicantCollapse">
-                        <div className="ms-1 pb-3 c-pointer" data-bs-toggle="modal" data-bs-target="#AboutCompany">
 
-                            <div className="banner-logo">
-                                <img src={job.company.banner ? job.company.banner : ''} className='banner-2' alt="" />
-                                <img src={job.company.logo} width={70} height={70} alt="" className="logo" style={{ 'left': job.company.banner ? '' : '-2px' }} />
-                            </div>
+                <div className="ms-md-1 ms-md-3 ms-1 pb-md-3 pb-1 c-pointer" data-bs-toggle="modal" data-bs-target="#AboutCompany">
 
-                            <div className="normal-line-height" style={{ 'marginTop': job.company.banner ? '' : '65px' }}>
-                                <h3 className='title-company'>{job.company.name}</h3>
-                                <p className="weight-600" >CEO : {job.company.ceo.username}</p>
-
-                            </div>
-
-                        </div>
+                    <div className="banner-logo">
+                        <img src={job.company.banner ? job.company.banner : ''} className='banner-2' alt="" />
+                        <img src={job.company.logo} width={70} height={70} alt="" className="logo" style={{ 'left': job.company.banner ? '' : '-2px' }} />
                     </div>
+
+                    <div className={job.company.banner ? "normal-line-height mt-md-0 mt-4" : "normal-line-height mt-md-0 mt-5 pt-3 pt-md-0"} style={{ 'marginTop': job.company.banner ? '' : '65px' }}>
+                        <h3 className='title-company'>{job.company.name}</h3>
+                        <p className="weight-600" >CEO : {job.company.ceo.username}</p>
+
+                    </div>
+
                 </div>
 
 
@@ -155,13 +151,13 @@ function JobExpanded({ job, SetActiveLayout }: { job: job, SetActiveLayout: Disp
                                         <img src={job.company.logo} width={70} height={70} alt="" className="logo" style={{ 'left': job.company.banner ? '' : '-2px' }} />
                                     </div>
 
-                                    <div className="normal-line-height" style={{ 'marginTop': job.company.banner ? '' : '65px' }}>
+                                    <div className={job.company.banner ? "normal-line-height mt-md-0 mt-4" : "normal-line-height mt-md-0 mt-5 pt-3 pt-md-0"} style={{ 'marginTop': job.company.banner ? '' : '65px' }}>
                                         <h3 className='title-company'>{job.company.name}</h3>
                                         <p className="weight-600 c-pointer"
-                                         onClick={() => {
-                                            modalCompanyCLoser.current!.click()
-                                            router(`/show-profile/${job.company.ceo.username}`, { state: { 'user_id': job.company.ceo.id } })
-                                        }}
+                                            onClick={() => {
+                                                modalCompanyCLoser.current!.click()
+                                                router(`/show-profile/${job.company.ceo.username}`, { state: { 'user_id': job.company.ceo.id } })
+                                            }}
                                         >CEO : {job.company.ceo.username}</p>
                                         <p className="mt-2 mb-3">{job.company.excerpt}</p>
                                         <div className="d-flex detail-svg">
@@ -172,14 +168,9 @@ function JobExpanded({ job, SetActiveLayout }: { job: job, SetActiveLayout: Disp
                                         </div>
                                         <p className='mt-2 mb-2'>location : {job.company.location}</p>
 
-                                        <p className='pb-4' style={{ whiteSpace: 'pre-line' }}>{job.company.about}</p>
+                                        <p className='pb-1' style={{ whiteSpace: 'pre-line' }}>{job.company.about}</p>
 
                                     </div>
-
-                                </div>
-
-
-                                <div className="modal-footer b-none pb-0 mt-5">
 
                                 </div>
                             </div>
@@ -346,7 +337,7 @@ function JobExpanded({ job, SetActiveLayout }: { job: job, SetActiveLayout: Disp
                 job.user_is_applied ?
                     null
                     :
-                    <p className="btn-1 apply-btn"
+                    <p className="btn-1 apply-btn pt-2 pb-2 pe-2 ps-2"
                         onClick={() => {
                             application_validity(job.id)
                                 .then((data) => {

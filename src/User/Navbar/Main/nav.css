@@ -10,11 +10,20 @@
 .offset{
     height: 59px;
 }
+.mobile-nav{
+    bottom: -2px;
+    background-color: white;
+    width: 100%;
+}
+.nav-offset{
+    width: 100%;
+    height: 46px;
+}
 .nav-items{
     display: flex;
     justify-content: space-around;
     margin: 0 auto;
-    gap: 1rem;
+    gap: 1.4rem;
 }
 .nav-item{
     display: flex;
@@ -26,9 +35,7 @@
 .nav-item > svg{
     fill: rgb(89, 89, 89);
 }
-.nav-item-active{
-    border-bottom: 2px solid var(--primary-color);
-}
+
 .user-on-nav{
     margin-top: -1.9px;
     position: relative;
@@ -74,12 +81,21 @@
     align-items: center;
     margin-left: 8px;
     height: min-content;
-    padding: .2rem .5rem;
+    padding: .3rem .5rem;
     border-radius: 3px;
     background-color: var(--primary-blue-gray);
 }
 .nav-title{
     margin-top: 7px;
+}
+.mobile-nav > .nav-item{
+    padding-top: 5px;
+}
+.mobile-nav > .nav-item > p{
+    font-size: x-small !important;
+}
+.mobile-nav > .nav-item{
+    min-width: 52px;
 }
 .nav-search{
     margin-left: 4px;
@@ -104,6 +120,14 @@
     .search-medium > svg{
         margin-left: .4rem;
     }
+    .nav-item-active{
+        border-top: 2px solid var(--primary-color);
+    }
+}
+@media (min-width:576px){
+    .nav-item-active{
+        border-bottom: 2px solid var(--primary-color);
+    }
 }
 .search-medium{
     width: 95%;
@@ -112,6 +136,15 @@
     margin-right: auto;
     display: none;
 }
+.n-footer{
+    position: absolute;
+    bottom: 14px;
+    width: 100%;
+}
+.n-footer > h6{
+    padding: .5rem 1rem;
+    margin-top: .5rem;
+}
 
 .nav-search:focus .search-navbar{
     border: 1px solid var(--primary-color);
@@ -119,3 +152,42 @@
 .nav-search:focus{
     outline: none;
 }
+.lds-spinner4 div::after{
+    height: 7px !important;
+    top: 3px !important;
+    left: 15px !important;
+}
+.lds-spinner4{
+    height: 1px !important;
+}
+.lds-spinner4 div{
+    transform-origin: 15px 0px !important;
+}
+#hidden-search-loading div::after{
+    background-color: inherit !important;
+}
+.notification-counter-mobile{
+    position: absolute;
+    color: white;
+    padding: .25rem;
+    right: 20px;
+    width: min-content;
+    height: min-content;
+    background-color: red;
+    border-radius: 100%;
+}
+.notification-counter{
+    width: min-content;
+    height: min-content;
+    padding: .3rem;
+    background-color: red;
+    right: 30px;
+    top: 2px;
+    border-radius: 100%;
+    position: absolute;
+    color: white;
+    font-family: var(--app-font);
+}
+
+
+

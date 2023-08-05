@@ -1,16 +1,4 @@
-.auth-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* min-height: calc(100vh-56px); */
-    margin-top: 1rem;
-}
-.auth-layout{
-    padding: .8rem 2rem;
-    background-color: white;
-    border-radius: 9px;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-}
+
 .input-1{
     width: 100%;
     border-radius: 5px;
@@ -80,12 +68,6 @@
     .auth-layout{
         box-shadow: none;
         padding: .3rem 0;
-    }
-    .login , .sign-up{
-        padding-top: 1.3rem;
-    }
-    body{
-        background-color: white;
     }
 }
 @media (max-width:257px) {

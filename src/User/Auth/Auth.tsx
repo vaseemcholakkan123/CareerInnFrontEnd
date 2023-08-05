@@ -8,9 +8,8 @@ import { validation } from '../Splits/Profile/UserProfile/Includes/Projects/Help
 
 
 
-async function successLogin(userdata: { username: string, user_id: number, profile: string | null, email: string, password: string }) {
+async function successLogin( userdata: { username: string, user_id: number, profile: string | null, email: string, password: string }) {
 
-    localStorage.clear();
     await CarreerInnAxios.post('user/token/', {
         username: userdata.username,
         password: userdata.password
@@ -18,7 +17,7 @@ async function successLogin(userdata: { username: string, user_id: number, profi
         .then(res => {
             localStorage.setItem('access-token', res.data.access)
             localStorage.setItem('refresh-token', res.data.refresh)
-            CarreerInnAxios.defaults.headers['Authorization'] = 'Bearer ' + localStorage.getItem('access-token')
+            CarreerInnAxios.defaults.headers['Authorization'] = 'Bearer ' + res.data.access
         })
         .catch(() => {
             AuthToastFailure('Internal Error')
@@ -45,8 +44,10 @@ export const HandleLogin = async (formEvent: React.SyntheticEvent, SetLoading: D
         try {
             const response = await CarreerInnAxios.post(adminLog ? 'admin/login/' : 'user/login/', { "username": usernameValue, "password": passwordValue });
             SetLoading(false);
-            SuccessMessage('Logged In');
+ 
             if(adminLog) localStorage.setItem('admin','true')
+           
+
             successLogin({ ...response.data.user, password: passwordValue });
 
             return response.data.user;
@@ -61,7 +62,10 @@ export const HandleLogin = async (formEvent: React.SyntheticEvent, SetLoading: D
 
 
 
-    } else return Promise.reject()
+    } else {
+        SetLoading(false)
+        return Promise.reject()
+    }
 
 }
 

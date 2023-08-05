@@ -1,3 +1,4 @@
+import { BASE_URL } from '../../AppMain/AppConfig/AppConstants'
 import { jobCompany } from '../ListJob/Helper'
 import { add_job } from './Helper'
 import './job.css'
@@ -26,6 +27,7 @@ function FormPageOne({ SetActiveFormPage, SetJobForm, job_form }: { job_form: ad
                                     <p className="weight-500">On-Site</p>
                                 </label>
                             </div>
+                            {BASE_URL}
 
                             <div className='d-flex gap-2'>
                                 <input type="checkbox" id='Office' name='work-type' checked={job_form.job_type == 'Hybrid'} onChange={() => {
@@ -60,7 +62,7 @@ function FormPageOne({ SetActiveFormPage, SetJobForm, job_form }: { job_form: ad
 
                 <div className="mb-2">
                     <p className="form-label">Expected salary</p>
-                    <input type="number" value={job_form.expected_salary} className='input-job-form p-inp' placeholder='600000' min={1} onChange={e=>SetJobForm({...job_form,expected_salary:Number(e.target.value)})} />
+                    <input type="number" value={job_form.expected_salary == 0 ? '' : job_form.expected_salary} min={1} className='input-job-form p-inp' placeholder='600000' onChange={e=>SetJobForm({...job_form,expected_salary:Number(e.target.value)})} />
                 </div>
 
 

@@ -24,7 +24,7 @@ function Password() {
               <p id={!passwordTriggered ? 'hidden' : ''} className="weight-600 app-link f-small password-trigger top-x" onClick={()=>{PasswordTrigger(passwordInput.current!); TriggerView(false)}}>Hide</p>
             </div>
            
-            <button className="btn-1 auth-btn" type='submit'>Agree & Continue
+            <button className="btn-1 auth-btn pb-2 pt-2" type='submit'>Agree & Continue
             
             <div className="lds-spinner" id={loading ? '' : 'hidden'} ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
             

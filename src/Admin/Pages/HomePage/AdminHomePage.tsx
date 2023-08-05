@@ -19,16 +19,13 @@ function AdminHomePage() {
 
 
     useEffect(() => {
-        console.log('rendering');
 
-        if (!localStorage.getItem("user") && !localStorage.getItem("admin")) {
+        check_admin().catch(() => {
+            validation("Authorization Revoked")
             router('/admin/login')
-        } else {
-            check_admin().catch(() => {
-                validation("Authorization Revoked")
-                router('/admin/login')
-            })
-        }
+        })
+        
+        
     })
 
     return (

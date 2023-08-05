@@ -39,7 +39,7 @@ function Skills() {
 
   return (
     <div>
-        <div className="d-flex w-100 p-2 pb-0 a-center mt-2">
+        <div className="d-flex w-100 p-2 pb-0 a-center mt-md-2 mt-0">
             <h5>Skills</h5>
 
             <div className='ms-auto d-flex a-center mt-1 me-1 btn-3' data-bs-toggle="modal" data-bs-target="#Skillmodal">

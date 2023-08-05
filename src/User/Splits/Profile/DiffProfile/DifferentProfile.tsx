@@ -28,7 +28,7 @@ function DifferentProfile() {
     }, [routerState.state])
 
     return (
-        <div className='profile-main-container mb-5 pb-3'>
+        <div className='profile-main-container mb-md-5 pb-md-3 mb-1 pb-1'>
 
             {
                 ActiveLayout == 'main' ?
@@ -37,10 +37,10 @@ function DifferentProfile() {
                         <>
                             <div className='banner-user-container app-shadow'>
                                 <div className="banner" style={{ backgroundImage: user.banner ? `url(${user.banner})` : 'url("https://static.licdn.com/sc/h/55k1z8997gh8dwtihm11aajyq")' }}>
-                                    <img src={user.profile ? user.profile : default_user_image} width={145} height={143} className={user.profile ? 'rounded-circle user-prof' : 'user-prof rounded-circle bg-white'} alt="user_profile" />
+                                    <img src={user.profile ? user.profile : default_user_image} width={145} height={143} className={user.profile ? 'rounded-circle user-prof resize-profile-img' : 'resize-profile-img user-prof rounded-circle bg-white'} alt="user_profile" />
 
                                 </div>
-                                <div className="user-main-holder pb-4 r-7 bg-white p-3 normal-line-height" >
+                                <div className="user-main-holder pb-md-4 pb-3 r-7 bg-white p-3 normal-line-height" >
                                     <div className='app-font ms-1 pb-1 align-self-end'>
                                         <h3 className="w-50">{user.username} </h3>
                                         <p >{user.info ? user.info : ''}</p>
@@ -60,12 +60,12 @@ function DifferentProfile() {
 
                             {/* <div className="or-1 w-100 m-2 ms-auto me-auto"></div> */}
 
-                            <div className='bg-white app-shadow w-100 p-3 mt-3 r-7'>
+                            <div className='bg-white app-shadow w-100 p-md-3 p-3 pb-3 pt-3 mt-md-3 mt-0 mobile-border r-7'>
 
                                 <div className="connections-info">
                                     <svg width="27px" height="27px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs></defs><rect className='a' x="5.5" y="5.5" width="15.8571" height="15.8571" /><rect className='a' x="27.5004" y="6.3575" width="14.1421" height="14.1421" transform="translate(0.6303 28.3788) rotate(-45)" /><rect className='a' x="5.5" y="26.6429" width="15.8571" height="15.8571" /><rect className='a' x="26.6429" y="26.6429" width="15.8571" height="15.8571" /></svg>
 
-                                    <div className='ms-2 app-font info' onClick={() => { SetActiveLayout('posts'); }}>
+                                    <div className='ms-2 app-font info normal-line-height' onClick={() => { SetActiveLayout('posts'); }}>
                                         <p className="weight-700">Activity</p>
                                         <p>See {user.username}'s posts</p>
                                     </div>
@@ -74,11 +74,11 @@ function DifferentProfile() {
 
                             {/* <div className="or-1 m-2 w-100 ms-auto me-auto"></div> */}
 
-                            <div className='bg-white app-shadow w-100 p-3 mt-3 r-7 pt-0'>
+                            <div className='bg-white app-shadow w-100 p-3 mt-md-3 mt-0 mobile-border r-7 pt-0'>
 
                                 <div>
-                                    <div className="d-flex w-100 p-2 a-center">
-                                        <h5>Education</h5>
+                                    <div className="d-flex w-100 p-2 pb-md-2 pb-0 a-center">
+                                        <h5 className='resize-heading'>Education</h5>
 
                                     </div>
 
@@ -110,7 +110,7 @@ function DifferentProfile() {
                             </div>
 
 
-                            <div className='bg-white app-shadow w-100 p-3 mt-3 r-7 pt-0'>
+                            <div className='bg-white app-shadow w-100 p-3 mt-md-3 mt-0 r-7 pt-0 mobile-border'>
                                 {/* Projects holder component */}
 
                                 <div>
@@ -128,7 +128,7 @@ function DifferentProfile() {
                                     }
                                     {
                                         !user.projects[0] ?
-                                            <div className='ms-3 mt-2'>
+                                            <div className='ms-3 mt-md-2 mt-1'>
                                                 <p>No projects Added</p>
                                             </div>
                                             :
@@ -139,8 +139,8 @@ function DifferentProfile() {
 
                                 {/* hardcode skills */}
 
-                                <div className="d-flex w-100 p-2 pb-0 a-center mt-2 mb-1">
-                                    <h5>Skills</h5>
+                                <div className="d-flex w-100 p-2 pb-0 a-center mt-md-2 mt-0 mb-1">
+                                    <h5 className='resize-heading'>Skills</h5>
 
                                 </div>
 
@@ -161,7 +161,7 @@ function DifferentProfile() {
                                 }
                                 {
                                     !user.skills[0] ?
-                                        <div className='ms-3 pb-2'>
+                                        <div className='ms-3 pb-2 mt-md-2 mt-1'>
                                             <p>No skills Added</p>
                                         </div>
                                         :

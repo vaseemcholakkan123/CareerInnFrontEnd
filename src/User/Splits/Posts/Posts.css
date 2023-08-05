@@ -1,4 +1,4 @@
-.post-content{
+.post-content {
     background-color: white;
     display: flex;
     gap: 10px;
@@ -7,14 +7,16 @@
     box-sizing: border-box;
     border-radius: 7px;
 }
-.report-input{
+
+.report-input {
     min-width: 90%;
     margin-top: .8rem;
     margin-left: 0;
     padding: .2rem .4rem;
     outline: none !important;
 }
-.like-input{
+
+.like-input {
     width: 100%;
     background-color: white;
     margin-left: -10px;
@@ -24,42 +26,71 @@
     border-radius: 26px;
     margin-right: 10px;
 }
-.also-input{
-    margin-left: .1rem ;
+
+.like-input-border {
+    border-bottom: .1px solid rgba(128, 128, 128, 0.353);
+    border-top: 1px solid rgba(128, 128, 128, 0.79);
+
+}
+
+.also-input {
+    margin-left: .1rem;
     padding: .4rem .1rem;
     width: -webkit-fill-available;
 
 }
-.like-input > p{
+
+.like-input>p {
     margin-left: 5px;
 }
 
-.posted-user-holder{
+.posted-user-holder {
     display: flex;
     align-items: center;
     padding: .3rem .8rem;
     padding-top: .6rem;
 }
-.post{
+
+.post {
     width: 100%;
     object-fit: contain;
 }
-.post-card{
+
+.post-card {
     background-color: white;
 }
+
 @media (min-width:500px) {
-    .post-card{
+    .post-card {
         border-radius: 12px;
     }
+    .action:hover {
+        background-color: var(--primary-blue-gray);
+    }
+    .follow:hover {
+        background-color: var(--primary-blue-gray);
+    }
 }
-.actions-holder{
+@media (max-width:500px) {
+    .post-btn{
+        font-weight: 500 !important;
+    }
+    .like-input-border {
+        border-top: 1px solid rgba(128, 128, 128, 0.181);
+    
+    }
+
+}
+
+.actions-holder {
     margin-top: .3rem;
     padding: 0 1rem;
     display: flex;
     gap: 10px;
     justify-content: space-around;
 }
-.action{
+
+.action {
     padding: .4rem 0;
     display: flex;
     gap: 5px;
@@ -69,42 +100,46 @@
     margin-bottom: .2rem;
     cursor: pointer;
 }
-.action:hover{
-    background-color: var(--primary-blue-gray);
-}
-.follow{
+
+
+
+.follow {
     margin-right: 1rem;
     cursor: pointer;
     padding: .5rem;
     border-radius: 7px;
 }
-.follow:hover{
-    background-color: var(--primary-blue-gray);
-}
-.comment{
+
+
+
+.comment {
     display: flex;
     padding: .3rem .5rem;
 }
-.comment-text{
+
+.comment-text {
     border-radius: 7px;
     padding: .4rem .5rem;
     background-color: var(--primary-blue-gray);
 }
-.post-modal{
+
+.post-modal {
     padding: .3rem .9rem !important;
     background-color: var(--primary-blue-gray);
     min-height: 150px;
     position: relative;
 }
-.post-modal > textarea{
+
+.post-modal>textarea {
     outline: none;
     background-color: inherit;
     border-radius: 7px;
     font-family: var(--app-font);
     font-weight: 600;
-    border:none
+    border: none
 }
-.post-modal > .svg { 
+
+.post-modal>.svg {
     fill: var(--primary-color);
     position: absolute;
     right: 18px;
@@ -114,37 +149,42 @@
     background-color: inherit;
     padding: .3rem;
 }
-.svg:hover p,.svg:hover{
+
+.svg:hover p,
+.svg:hover {
     background-color: white;
     display: block;
 }
+
 .svg p {
     display: none;
 }
-.post-btn{
-    border:none;
+
+.post-btn {
+    border: none;
     cursor: pointer;
     font-family: var(--app-font);
     font-weight: 600;
     background-color: inherit;
 }
-.post-btn:hover{
+
+.post-btn:hover {
     border-bottom: 1px solid var(--primary-color);
 }
-.post-content-text > a{
+
+.post-content-text>a {
     text-decoration: none;
-    color: blue;
+    color: rgb(76, 47, 204);
     font-weight: 600;
     font-family: var(--app-font);
     cursor: pointer;
 }
-.post-content-text > a:hover{
+
+.post-content-text>a:hover {
     text-decoration: underline;
 }
 
-.app-blue-gray{
+.app-blue-gray {
     background-color: var(--primary-blue-gray);
     border-radius: 8px;
 }
-
-

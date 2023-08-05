@@ -8,8 +8,8 @@ import { Experiencetype } from '../UserProfile/Includes/Experience/Helper'
 function DiffExp({Experiences} : {Experiences : Experiencetype[]}) {
   return (
     <div>
-        <div className="d-flex w-100 p-2 a-center">
-            <h5>Experience</h5>
+        <div className="d-flex w-100 p-md-2 p-1 a-center">
+            <h5 className='resize-heading'>Experience</h5>
         </div>
 
         {

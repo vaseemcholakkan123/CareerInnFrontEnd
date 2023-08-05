@@ -15,7 +15,7 @@ function CommentsCard( {comment , delete_local_comment} :{comment: comment , del
                 <div className="d-flex a-center">
                     <div>
                         <p className="weight-700">{comment.user.username == user.username ? 'You' : comment.user.username}</p>
-                        <p className="f-small">{comment.user.info ? comment.user.info : ''}</p>
+                        <p className="f-small d-md-block d-none">{comment.user.info ? comment.user.info : ''}</p>
                     </div>
                     <p className="f-small mt-1 ms-auto">{updateTimeSince(String(comment.commented_on))}</p>
                     {

@@ -9,7 +9,7 @@ function SavedPost() {
     
 
   return (
-    <div>
+    <div className='pb-4'>
         <Posts url={'user/get-saved-posts/'} />
     </div>
   )

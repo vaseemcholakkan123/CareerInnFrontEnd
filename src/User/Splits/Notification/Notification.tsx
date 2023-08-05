@@ -32,8 +32,8 @@ function Notification() {
 
     return (
         <div className='w-100 bg-white app-shadow r-7'>
-            <div className="d-flex a-center mt-2 p-4 pb-2 pt-2 ps-2">
-                <h5 className='ms-2 p-2'>{ActiveLayout == 'unread' ? 'Unread Notifications' : 'Read Notifications'}</h5>
+            <div className="d-flex a-center mt-md-2 mt-0 p-4 pb-2 pt-2 ps-2 pe-3 pe-md-4 border-0 border-bottom">
+                <h5 className='ms-md-2 ms-0 p-md-2 p-1 resize-heading'>{ActiveLayout == 'unread' ? 'Unread Notifications' : 'Read Notifications'}</h5>
                 <svg data-bs-toggle="dropdown" aria-expanded="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="ms-auto bi bi-three-dots-vertical" viewBox="0 0 16 16">
                     <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                 </svg>
@@ -59,10 +59,10 @@ function Notification() {
 
                     UserNotifications.map(notification => {
                         return (
-                            <div key={notification.id} className="col-12 d-flex ps-md-3 pe-md-3 c-pointer">
+                            <div key={notification.id} className="ps-2 pe-2 pb-1 col-12 d-flex ps-md-3 pe-md-3 c-pointer">
                                 {
                                     notification.rel_img || notification.type == 'Connection' ?
-                                        <img src={notification.rel_img ? BASE_IMAGE_URL + notification.rel_img : default_user_image} className={notification.rel_img?.includes('profile') || notification.type != 'Post' ? 'rounded-circle' : ''} width={56} height={56} alt="" onClick={() => {
+                                        <img src={notification.rel_img ? BASE_IMAGE_URL + notification.rel_img : default_user_image} className={notification.rel_img?.includes('profile') || notification.type != 'Post' ? 'resize-phone rounded-circle' : 'resize-phone'} width={56} height={56} alt="" onClick={() => {
                                             if (notification.type === 'Post') {
                                                 router('/view-post', { state: { 'post_id': notification.link_thread } })
                                             }
@@ -80,7 +80,7 @@ function Notification() {
                                         :
                                         null
                                 }
-                                <div className='normal-line-height mt-auto mb-3 ms-2' onClick={() => {
+                                <div className={notification.rel_img || notification.type == 'Connection' ? 'normal-line-height mt-auto mb-3 ms-2' : 'ps-4 normal-line-height mt-auto mb-3 ms-2'} onClick={() => {
                                     if (notification.type === 'Post') {
                                         router('/view-post', { state: { 'post_id': notification.link_thread } })
                                     }

@@ -39,7 +39,7 @@ function Projects() {
   return (
     <div>
         <div className="d-flex w-100 p-2 pb-0 mt-1 a-center">
-            <h5>Projects</h5>
+            <h5 className='resize-heading' >Projects</h5>
 
             <div className='ms-auto d-flex a-center mt-1 me-1 btn-3'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" className="mercado-match" width="18" height="18" focusable="false">
@@ -78,7 +78,7 @@ function Projects() {
                     <button type="button" ref={modalCloser} className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     
-                    <div className="modal-body info-modal">
+                    <div className="modal-body info-modal p-md-3 p-2">
                     
                         <p className="f-small app-gray">* indicates required</p>
                     
@@ -136,7 +136,7 @@ function Projects() {
                             .catch(e=>{
                                 validation(e.response.data.message)
                             })
-                        }} className="btn-1 p-3 pt-1 pb-1">{updating != 0 ? 'Update Project' : 'Add Project'}</button>
+                        }} className="btn-1 p-3 pt-1 pb-1 f-m-smaller">{updating != 0 ? 'Update Project' : 'Add Project'}</button>
                     </div>
                 </div>
             </div>

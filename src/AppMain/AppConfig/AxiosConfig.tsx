@@ -20,7 +20,7 @@ CarreerInnAxios.interceptors.request.use(config => {
 
     let userData = localStorage.getItem('logged_user')
 
-      if (!config.headers['Authorization'] && userData) {
+     if (!config.headers['Authorization'] && userData) {
         
         const token = localStorage.getItem('access-token');
         if (token) {

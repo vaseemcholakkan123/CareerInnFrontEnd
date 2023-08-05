@@ -26,6 +26,22 @@
         padding-left: 2.3rem !important;
     }
 }
+@media (max-width:576px) {
+    .profile-main-container{
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+    .banner-user-container{
+        border-radius: 0 !important;
+
+    }
+    .resize-profile-img{
+        width: 130px !important;
+        height: 130px !important;
+        top: 74px;
+        left: 13px;
+    }
+}
 
 .banner-user-container{
     border-radius: 7px;

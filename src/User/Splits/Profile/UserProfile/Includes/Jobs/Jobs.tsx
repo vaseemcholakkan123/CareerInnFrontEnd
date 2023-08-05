@@ -50,7 +50,7 @@ function Jobs() {
   
  
   return (
-    <div className="connections-info">
+    <div className="connections-info pb-md-2 pb-0">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="var(--primary-color)" width="24" height="24" focusable="false">
             <circle cx="12" cy="4" r="2" style={{'isolation':'isolate'}} opacity=".75"></circle>
             <path d="M21 10H3a1 1 0 00-1 1v10a1 1 0 001 1h18a1 1 0 001-1V11a1 1 0 00-1-1zm-5 9H8v-2h8v2zm2-4H6v-2h12v2z"></path>

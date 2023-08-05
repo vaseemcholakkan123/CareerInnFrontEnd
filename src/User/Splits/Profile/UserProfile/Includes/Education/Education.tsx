@@ -39,7 +39,7 @@ function Education() {
   return (
     <div>
         <div className="d-flex w-100 p-2 a-center">
-            <h5>Education</h5>
+            <h5 className='resize-heading'>Education</h5>
 
             <div className='ms-auto d-flex a-center mt-1 me-1 btn-3'>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" className="mercado-match" width="18" height="18" focusable="false">
@@ -81,7 +81,7 @@ function Education() {
                     <button type="button" ref={modalCloser} className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     
-                    <div className="modal-body info-modal">
+                    <div className="modal-body info-modal p-md-3 p-2">
                     
                         <p className="f-small app-gray">* indicates required</p>
                     
@@ -106,7 +106,7 @@ function Education() {
                     </div>
 
                     <div className="modal-footer b-none">
-                        <button className="btn-1" onClick={()=>{
+                        <button className="btn-1 f-m-smaller" onClick={()=>{
                             updating != 0 ? 
 
                             axios_update_education(updating,EduForm)

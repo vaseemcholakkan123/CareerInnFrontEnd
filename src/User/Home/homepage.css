@@ -23,7 +23,7 @@
 }
 @media (max-width:690px) {
     .user-home-container{
-        padding: .1rem 0rem !important;
+        padding: 0rem 0rem !important;
     }
     .posts-container{
         background-color: white;
@@ -31,9 +31,12 @@
     }
     .col-inside{
         width: 100%;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
     }
     .main-div{
         box-shadow: none;
+        background-color: white !important;
     }
     .left{
         width: 100% !important;

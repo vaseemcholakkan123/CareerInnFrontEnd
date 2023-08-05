@@ -54,7 +54,7 @@ function Connections() {
     },[loadNext,ActiveLayout])
 
   return (
-    <div className='app-font bg-white pb-4 pt-3 r-7 app-shadow'>
+    <div className='app-font bg-white pb-4 pt-md-3 pt-2 r-7 app-shadow'>
         <div className="active-item-holder">
             <p className={ActiveLayout == 'followers' ? 'connection-active' : ''} onClick={()=>{SetActiveLayout('followers')}}>Followers</p>
             <p className={ActiveLayout == 'following' ? 'connection-active' : ''} onClick={()=>{SetActiveLayout('following')}}>Following</p>
@@ -69,10 +69,10 @@ function Connections() {
 
                     followers.map(follower=>{
                         return(
-                            <div key={follower.user.id} className="col-12 d-flex ps-md-3 pe-md-3">
-                                    <img src={follower.user.profile ? follower.user.profile : default_user_image} className='rounded-circle' width={62} height={62} alt="" onClick={()=>{ router(`/show-profile/${follower.user.username}`, { state: { 'user_id': follower.user.id } }) }} />
+                            <div key={follower.user.id} className="ps-2 pe-2 col-12 d-flex ps-md-3 pe-md-3">
+                                    <img src={follower.user.profile ? follower.user.profile : default_user_image} className='resize-phone rounded-circle' width={62} height={62} alt="" onClick={()=>{ router(`/show-profile/${follower.user.username}`, { state: { 'user_id': follower.user.id } }) }} />
                                     <div className='normal-line-height mt-auto mb-3 ms-2' onClick={()=>{ router(`/show-profile/${follower.user.username}`, { state: { 'user_id': follower.user.id } }) }}>
-                                        <h5 className='m-0'>{follower.user.username}</h5>
+                                        <h5 className='m-0 resize-heading'>{follower.user.username}</h5>
                                         <p className='f-small'>{follower.user.info ? follower.user.info : ''}</p>
                                     </div>
                                     <svg data-bs-toggle="dropdown" aria-expanded="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="ms-auto me-1 mt-3 bi bi-three-dots-vertical" viewBox="0 0 16 16">
@@ -147,10 +147,10 @@ function Connections() {
 
                 following.map(thread=>{
                     return(
-                        <div key={thread.following[0].id} className="col-12 d-flex ps-md-3 pe-md-3">
-                                <img src={thread.following[0].profile ? thread.following[0].profile : default_user_image} className='rounded-circle' width={62} height={62} alt="" onClick={()=>{ router(`/show-profile/${thread.following[0].username}`, { state: { 'user_id': thread.following[0].id } }) }} />
+                        <div key={thread.following[0].id} className="ps-2 pe-2 col-12 d-flex ps-md-3 pe-md-3">
+                                <img src={thread.following[0].profile ? thread.following[0].profile : default_user_image} className='resize-phone rounded-circle' width={62} height={62} alt="" onClick={()=>{ router(`/show-profile/${thread.following[0].username}`, { state: { 'user_id': thread.following[0].id } }) }} />
                                 <div className='normal-line-height mt-auto mb-3 ms-2' onClick={()=>{ router(`/show-profile/${thread.following[0].username}`, { state: { 'user_id': thread.following[0].id } }) }}>
-                                    <h5 className='m-0'>{thread.following[0].username}</h5>
+                                    <h5 className='m-0 resize-heading'>{thread.following[0].username}</h5>
                                     <p className='f-small'>{thread.following[0].info ? thread.following[0].info : ''}</p>
                                 </div>
                                 <svg data-bs-toggle="dropdown" aria-expanded="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="ms-auto me-1 mt-3 bi bi-three-dots-vertical" viewBox="0 0 16 16">

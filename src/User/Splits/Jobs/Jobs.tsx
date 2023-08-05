@@ -148,11 +148,11 @@ function Jobs() {
 
                     <div className="w-100 relative">
                         <div className='normal-line-height d-flex'>
-                            <h2>Recommended for you</h2>
-                            <div className='d-flex a-center gap-1 ms-auto c-pointer pt-1' data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+                            <h2 className='resize-heading pt-md-1 pb-md-1 pt-3 pb-3 ps-md-1 ps-2'>Recommended for you</h2>
+                            <div onClick={() => SetTriggerh(!triggerH)} className='d-flex a-center gap-1 ms-auto c-pointer pt-1 me-2 me-md-0' data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="ms-auto bi bi-filter" viewBox="0 0 16 16"><path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"></path></svg>
                                 {/* on click show fiter-container */}
-                                <p onClick={() => SetTriggerh(!triggerH)}>Filter jobs</p>
+                                <p>Filter</p>
                             </div>
                         </div>
 
@@ -161,10 +161,11 @@ function Jobs() {
 
                                 <div className="p-2">
                                     <div className='d-flex a-center'>
-                                        <h4 className='m-0'>Filters</h4>
+                                        <h4 className='m-md-0'>Filters</h4>
                                         <p className='ms-auto f-small'
                                             onClick={() => {
                                                 AddFilter({ department: { title: '', id: 0 }, skills_contain: [], work_type: '', work_time: '' })
+                                                SetTriggerh(!triggerH)
                                             }}
                                         >clear filters</p>
                                     </div>
@@ -294,6 +295,10 @@ function Jobs() {
                                             <p>Contract</p>
                                         </div>
 
+                                        <div className=" col-4 col-md-2 text-center  btn-3 ps-2 pe-2" id={Filters.work_time == 'Internship' ? 'hidden' : ''} onClick={(() => AddFilter({ ...Filters, work_time: 'Internship' }))}>
+                                            <p>Internship</p>
+                                        </div>
+
 
                                     </div>
 
@@ -332,9 +337,9 @@ function Jobs() {
 
                                 </div>
 
-                                <p className='wieght-700 filter-close text-center mb-auto' onClick={(() => { SetTriggerh(!triggerH) })}>x</p>
 
                             </div>
+                                <p className='wieght-700 filter-close text-center mb-auto p-1 bg-blg' onClick={(() => { SetTriggerh(!triggerH) })}>x</p>
                         </div>
 
 
@@ -344,12 +349,12 @@ function Jobs() {
                                 Jobs.map(job => {
                                     return (
                                         <div key={job.id} className={job.id == job_id ? "job-card app-blue-gray" : 'job-card'} onClick={() => { SetActiveLayout('x'); ExpandJob(job) }}>
-                                            <img src={job.company.logo} width={78} height={78} className='rounded-circle' alt="company_logo" />
+                                            <img src={job.company.logo} width={78} height={78} className='resize-phone rounded-circle' alt="company_logo" />
                                             <div className="ms-2 normal-line-height">
                                                 <p className="weight-600 app-color f-large c-pointer f">{job.name}</p>
                                                 <p className="">{job.company.name}</p>
                                                 <p className='f-small'>{job.company.location} | {job.job_type}</p>
-                                                <p className='f-small mt-2'>{updateTimeSince(String(job.posted_on))} | {job.applicants_count == 0 ? 'Be the first to apply' : job.applicants_count + ' applicants'}</p>
+                                                <p className='f-small f-m-smaller mt-1 mt-md-2 '>{updateTimeSince(String(job.posted_on))} | {job.applicants_count == 0 ? 'Be the first to apply' : job.applicants_count + ' applicants'}</p>
                                             </div>
                                         </div>
                                     )

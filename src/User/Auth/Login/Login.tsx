@@ -25,11 +25,11 @@ function Login() {
       <SimpleNav />
       <div className='container-fluid auth-container f-coloumn'>
         
-        <div className="auth-layout login extra-login app-font">
-          <h3 className='m-0 weight-600 pt-1'>Sign In</h3>
-          <p className='weight-500 mb-2'>Stay Updated on your professional world</p>
+        <div className="auth-layout app-font">
+          <h3 className='m-0 weight-600 pt-1 mt-md-0'>Sign In</h3>
+          <p className='weight-500 pb-3 pm-md-2'>Stay Updated on your professional world</p>
           <form onSubmit={e=>{HandleLogin(e,SetLoading).then((data)=>{
-            dispatcher(Adduser(data));
+            dispatcher(Adduser(data))
             router('/')
           })}}>
 
@@ -42,7 +42,7 @@ function Login() {
             </div>
             <p className="primary-color mt-1 mb-0 app-link" onClick={()=>router('/Auth/ForgotPassword')}>Forgot Password</p>
             <br />
-            <button className="btn-1 auth-btn" type='submit'>Sign In
+            <button className="btn-1 auth-btn pb-2 pt-2" type='submit'>Sign In
             <div className="lds-spinner" id={loading ? '' : 'hidden'} ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
             </button>
           </form>
@@ -60,7 +60,7 @@ function Login() {
 
         </div>
 
-        <div className="mt-2">
+        <div className="mt-0 mt-md-2">
           <p>New to CareerInn? <span className='app-link app-color weight-600' onClick={()=>router('/Auth/signup')}>Join now</span></p>
         </div>
 

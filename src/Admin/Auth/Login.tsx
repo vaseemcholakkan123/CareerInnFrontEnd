@@ -40,13 +40,12 @@ function Login() {
                             <p id={passwordTriggered ? 'hidden' : ''} className="weight-600 app-link f-small password-trigger" onClick={() => { PasswordTrigger(passwordInput.current!); TriggerView(true) }}>Show</p>
                             <p id={!passwordTriggered ? 'hidden' : ''} className="weight-600 app-link f-small password-trigger" onClick={() => { PasswordTrigger(passwordInput.current!); TriggerView(false) }}>Hide</p>
                         </div>
-                        <button className="btn-1 auth-btn" type='submit'>Log In
+                        <button className="btn-1 auth-btn pt-2 pb-2" type='submit'>Log In
                             <div className="lds-spinner" id={loading ? '' : 'hidden'} ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
                         </button>
                     </form>
 
                 </div>
-
 
             </div>
         </>

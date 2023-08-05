@@ -46,7 +46,7 @@ function UserProfile() {
   }, [window.location.pathname])
 
   return (
-    <div className='profile-main-container mb-5 pb-3'>
+    <div className='profile-main-container mb-5 pb-md-3 pb-0'>
 
       {
         ActiveLayout == 'main' ?
@@ -67,10 +67,10 @@ function UserProfile() {
                   :
                   null
                 }} />
-                <img src={user.profile ? user.profile : default_user_image} width={145} height={143} className={user.profile ? 'rounded-circle user-prof' : 'user-prof rounded-circle bg-white'} alt="user_profile" />
+                <img src={user.profile ? user.profile : default_user_image} width={145} height={143} className={user.profile ? 'rounded-circle user-prof resize-profile-img' : 'resize-profile-img user-prof rounded-circle bg-white'} alt="user_profile" />
 
               </div>
-              <div className="user-main-holder pb-4 r-7 bg-white p-3 normal-line-height" >
+              <div className="user-main-holder pb-md-4 pb-0 r-7 bg-white p-3 normal-line-height" >
                 <div className='app-font ms-1 pb-1 align-self-end'>
                   <h3 className="w-50">{user.username}</h3>
                   <p >{user.info ? user.info : 'add info to reach people'}</p>
@@ -109,7 +109,7 @@ function UserProfile() {
                     </div>
                   </div>
                   <div className="modal-footer b-none">
-                    <label htmlFor='profile' className="btn-1">Upload Photo</label>
+                    <label htmlFor='profile' className="btn-1 f-m-smaller">Upload Photo</label>
                     <input onChange={e => {
                       e.target.files ?
 
@@ -138,7 +138,7 @@ function UserProfile() {
                     <button type="button" ref={profileModalClose} className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
 
-                  <div className="modal-body info-modal m-height">
+                  <div className="modal-body info-modal m-height p-md-3 p-2">
 
                     <p className="f-small app-gray">* indicates required</p>
                     <div className="input-infos">
@@ -175,7 +175,7 @@ function UserProfile() {
 
                   </div>
                   <div className="modal-footer b-none">
-                    <button className="btn-1"
+                    <button className="btn-1 f-m-smaller"
                       onClick={() => {
                         change_profile_detail(profForm).then(res => {
                           dispatcher(Adduser(res?.data.user));
@@ -199,7 +199,7 @@ function UserProfile() {
 
             {/* <div className="or-1 w-100 m-2 ms-auto me-auto"></div> */}
 
-            <div className='bg-white app-shadow w-100 p-3 mt-3 r-7'>
+            <div className='bg-white app-shadow w-100 p-md-3 p-2 mt-md-3 mt-1 r-7'>
               <div className="connections-info">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="var(--primary-color)" className="mercado-match" width="24" height="24" focusable="false">
                   <path d="M12 16v6H3v-6a3 3 0 013-3h3a3 3 0 013 3zm5.5-3A3.5 3.5 0 1014 9.5a3.5 3.5 0 003.5 3.5zm1 2h-2a2.5 2.5 0 00-2.5 2.5V22h7v-4.5a2.5 2.5 0 00-2.5-2.5zM7.5 2A4.5 4.5 0 1012 6.5 4.49 4.49 0 007.5 2z"></path>
@@ -234,8 +234,9 @@ function UserProfile() {
             </div>
 
             {/* <div className="or-1 m-2 w-100 ms-auto me-auto"></div> */}
+            <div className="or-1 w-100 d-md-none"></div>
 
-            <div className='bg-white app-shadow w-100 p-3 mt-3 r-7 pt-0'>
+            <div className='bg-white app-shadow w-100 p-md-3 p-2 mt-3 r-7 pt-0'>
 
               <Education />
 
@@ -245,7 +246,8 @@ function UserProfile() {
 
 
             </div>
-            <div className='bg-white app-shadow w-100 p-3 mt-3 r-7 pt-0'>
+            {/* <div className="or-1 w-100 d-md-none"></div> */}
+            <div className='bg-white app-shadow w-100 p-md-3 p-2 pb-0 mt-md-3 mt-2 r-7 pt-0'>
               {/* Projects holder component */}
 
               <Projects />
