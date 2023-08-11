@@ -35,11 +35,11 @@ function Reports() {
 
     return (
         <div className='w-100'>
-            <header className='w-100 d-flex p-1 p-md-4 a-center'>
+            <header className='w-100 d-flex p-1 p-md-4 a-center p-md-1 ps-2 '>
                 <h3>All Reports</h3>
             </header>
 
-            <div className="row p-1 m-md-2 m-1 gy-2 container-height-admin">
+            <div className="row p-1 m-md-2 m-1 gy-2 container-height-admin p-md-1 ps-2">
 
 
                 {
