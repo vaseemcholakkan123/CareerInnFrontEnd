@@ -38,9 +38,7 @@
         box-shadow: none;
         background-color: white !important;
     }
-    .left{
-        width: 100% !important;
-    }
+
     
 }
 @media (max-width:1310px) {
@@ -53,5 +51,10 @@
    
 }
 .left{
-    width: 70% ;
+    width: 100% ;
+}
+@media (min-width:980px) {
+    .left{
+        width: 70% !important;
+    }
 }

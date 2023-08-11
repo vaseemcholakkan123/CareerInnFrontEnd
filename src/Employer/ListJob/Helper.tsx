@@ -38,6 +38,7 @@ export type jobCompany = {
     posted_on:Date,
     is_closed:boolean,
     applicants_count:number,
+    interview_count:number,
 }
 
 export async function get_company_jobs(){

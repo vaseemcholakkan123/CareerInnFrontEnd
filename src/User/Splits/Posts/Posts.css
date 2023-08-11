@@ -79,6 +79,17 @@
         border-top: 1px solid rgba(128, 128, 128, 0.181);
     
     }
+    .post-modal{
+        padding: 0.1rem 0rem !important;
+        display: flex;
+        flex-direction: column;
+    }
+    .post-modal img{
+        margin-top: auto;
+    }
+    .post-modal > textarea{
+        padding: .3rem !important;
+    }
 
 }
 
@@ -124,7 +135,7 @@
 }
 
 .post-modal {
-    padding: .3rem .9rem !important;
+    padding: .3rem .9rem;
     background-color: var(--primary-blue-gray);
     min-height: 150px;
     position: relative;

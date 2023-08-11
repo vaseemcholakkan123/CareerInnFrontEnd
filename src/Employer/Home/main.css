@@ -1,14 +1,16 @@
-.employee-sidebar{
+.employee-sidebar {
     font-family: var(--app-font);
     background-color: var(--primary-color2);
     color: white;
     padding: 0 .5rem;
     min-height: calc(100vh - 56px);
 }
-.app-color{
+
+.app-color {
     color: var(--primary-color);
 }
-.side-item{
+
+.side-item {
     display: flex;
     padding: .4rem .6rem;
     margin-left: .2rem;
@@ -17,13 +19,29 @@
     cursor: pointer;
     margin-top: .3rem;
 }
-.sidebar-container{
+
+.sidebar-container {
     margin-left: .15rem;
 }
-.side-item:hover{
+
+.side-item:hover {
     background-color: var(--primary-color3);
 }
-.active{
+
+.active {
     background-color: var(--primary-color3);
     padding-left: 1rem;
+}
+
+@media (max-width: 768px) {
+
+    .sidebar-mobile {
+        position: absolute;
+        z-index: 2;
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(-252px);
+    }
+    .show-sidebar{
+        transform: translateX(0px);
+    }
 }

@@ -1,7 +1,6 @@
 .company-main{
     background-color: white;
     color: black;
-    padding-bottom: 6rem;
 }
 .banner-company{
     max-width: 100%;
@@ -11,9 +10,11 @@
     max-width: 100%;
 }
 .company-logo{
+    max-width: 200px;
+    max-height: 200px;
     position: absolute;
     left: 42px;
-    top: 150px;
+    top: 20%;
 }
 .main-texts-holder{
     margin-top: 70px;
@@ -31,4 +32,17 @@
     font-size: large;
     font-weight: 500;
     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+    .main-texts-holder{
+        margin-left: .2rem;
+    }
+    .company-logo{
+        width: 20vw;
+        border:  1px solid rgba(128, 128, 128, 0.332);
+        left: 25px;
+        
+    }
 }

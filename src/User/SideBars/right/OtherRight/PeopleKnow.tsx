@@ -48,7 +48,7 @@ function PeopleKnow() {
                             <div key={uzer.id} className="col-12 d-flex ps-md-3 pe-md-3 mt-2 mb-1">
                                 <img src={uzer.profile ? uzer.profile : default_user_image} className='rounded-circle' width={50} height={50} alt="" onClick={()=>{ router(`/show-profile/${uzer.username}`, { state: { 'user_id': uzer.id } }) }} />
                                 <div className='normal-line-height mt-auto mb-3 ms-2' onClick={()=>{ router(`/show-profile/${uzer.username}`, { state: { 'user_id': uzer.id } }) }}>
-                                    <p className='m-0 weight-500'>{uzer.username}</p>
+                                    <p className='m-0 weight-500'>{uzer.username.length < 10 ? uzer.username : uzer.username.slice(0,8) + '...' }</p>
                                     <p className='f-small'>{uzer.info ? uzer.info : ''}</p>
                                 </div>
 

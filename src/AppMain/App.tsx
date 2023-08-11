@@ -25,7 +25,7 @@ function App() {
           <Route path="/Auth/signup" element={<SignUp />} />
           <Route path="/*" element={user.user_id ? <HomePage /> : <Navigate to={'Auth/login'} /> } />
           <Route path="/admin/*" element={ < AdminNavigator /> } />
-          <Route path="/employer" element={<EmployerHome />} />
+          <Route path="/employer/*" element={<EmployerHome />} />
           <Route path="/interview" element={<Interview />} />
         </Routes>
       </Router>

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../../../AppMain/AppConfig/Redux/store'
 import default_user_image from '../../../../AppMain/AppConfig/AppConstants'
 import { useDispatch } from 'react-redux'
-import { change_banner_picture, change_profile_detail, change_profile_picture, detailForm } from '../Helper'
+import { change_banner_picture, change_profile_detail, change_profile_picture, detailForm, save_resume } from '../Helper'
 import { Adduser } from '../../../../AppMain/AppConfig/Redux/userReducer'
 import Experience from './Includes/Experience/Experience'
 import Projects from './Includes/Projects/Projects'
@@ -14,11 +14,12 @@ import Skills from './Includes/Skills/Skills'
 import Connections from './Layouts/Connections/Connections'
 import ProfPost from './Layouts/Posts/ProfPost'
 import ProfJobs from './Layouts/Jobs/ProfJobs'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 
 function UserProfile() {
   const user = useSelector((state: RootState) => state.logged_user.value)
   const profileModalClose = useRef<HTMLButtonElement>(null)
+  const resumeModalClose = useRef<HTMLButtonElement>(null)
   const ProfileImage = useRef<HTMLImageElement>(null)
   const dispatcher = useDispatch()
   const [profForm, setProfForm] = useState<detailForm>({ username: user.username, info: user.info, mobile: user.mobile, location: user.location })
@@ -27,6 +28,8 @@ function UserProfile() {
 
 
   useEffect(() => {
+    console.log(user,'[[[[');
+    
     if (window.location.pathname.split('/')[1] == 'profile' && !window.location.pathname.split('/')[2]) {
       SetActiveLayout('main')
     } else SetActiveLayout('main')
@@ -48,8 +51,11 @@ function UserProfile() {
   return (
     <div className='profile-main-container mb-5 pb-md-3 pb-0'>
 
-      {
-        ActiveLayout == 'main' ?
+
+      <Routes>
+
+
+        <Route path='/' element={
           <>
             <div className='banner-user-container app-shadow'>
               <div className="banner" style={{ backgroundImage: user.banner ? `url(${user.banner})` : 'url("https://static.licdn.com/sc/h/55k1z8997gh8dwtihm11aajyq")' }}>
@@ -58,14 +64,14 @@ function UserProfile() {
                     <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
                   </svg>
                 </label>
-                <input type="file" className='d-none' id='banner' accept="image/*" onChange={e=>{
+                <input type="file" className='d-none' id='banner' accept="image/*" onChange={e => {
                   e.target.files ?
 
-                  change_banner_picture(e.target.files[0]).then(res => {
-                    dispatcher(Adduser(res.data.user))
-                  })
-                  :
-                  null
+                    change_banner_picture(e.target.files[0]).then(res => {
+                      dispatcher(Adduser(res.data.user))
+                    })
+                    :
+                    null
                 }} />
                 <img src={user.profile ? user.profile : default_user_image} width={145} height={143} className={user.profile ? 'rounded-circle user-prof resize-profile-img' : 'resize-profile-img user-prof rounded-circle bg-white'} alt="user_profile" />
 
@@ -84,6 +90,13 @@ function UserProfile() {
                   <ul className="dropdown-menu dropdown-menu-end">
                     <li><a className="dropdown-item" data-bs-toggle="modal" data-bs-target="#Profilemodal">Profile picture</a></li>
                     <li><a className="dropdown-item" data-bs-toggle="modal" data-bs-target="#detailmodal" >Edit Details</a></li>
+                    {
+                      user.is_premium_user ?
+                        <li><a className="dropdown-item text-primary" data-bs-toggle="modal" data-bs-target="#resumeModal" >{user.resume ? 'Change resume' : 'Save Resume'}</a></li>
+
+                        :
+                        null
+                    }
                   </ul>
                 </div>
 
@@ -117,15 +130,52 @@ function UserProfile() {
                           dispatcher(Adduser(res.data.user))
                           profileModalClose.current!.click()
                         })
- 
+
                         : null
-                    }} type="file" className='d-none'  accept="image/*" id='profile' />
+                    }} type="file" className='d-none' accept="image/*" id='profile' />
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Edit profile picture modal */}
+
+            {/* Save Resume modal */}
+
+            <div className="modal fade app-font" id="resumeModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div className="modal-dialog profile-modal">
+                <div className="modal-content">
+                  <div className="modal-header b-none">
+                    <h1 className="modal-title fs-5" id="exampleModalLabel">{user.resume ? 'Change resume' : 'Save resume'}</h1>
+                    <button type="button" ref={resumeModalClose} className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div className="modal-body">
+                    <div>
+                      
+                      <div className="ms-2 mt-1 h-100">
+                        <p>Attatch resume</p>
+                        <p className='weight-700'>Make your applications faster</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="modal-footer b-none">
+                    <label htmlFor='resume' className="btn-1 f-m-smaller">{user.resume ? 'Change resume':'Upload Resume'}</label>
+                    <input onChange={e => {
+                      e.target.files ?
+
+                        save_resume(e.target.files[0]).then(res => {
+                          dispatcher(Adduser(res.data.user))
+                          resumeModalClose.current!.click()
+                        })
+
+                        : null
+                    }} type="file" className='d-none' accept="application/pdf" id='resume' />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Save Resume modal */}
 
 
             {/* Edit profile detail modal */}
@@ -226,7 +276,7 @@ function UserProfile() {
                   <path d="M12 16v6H3v-6a3 3 0 013-3h3a3 3 0 013 3zm5.5-3A3.5 3.5 0 1014 9.5a3.5 3.5 0 003.5 3.5zm1 2h-2a2.5 2.5 0 00-2.5 2.5V22h7v-4.5a2.5 2.5 0 00-2.5-2.5zM7.5 2A4.5 4.5 0 1012 6.5 4.49 4.49 0 007.5 2z"></path>
                 </svg>
 
-                <div className='ms-2 app-font info' onClick={() => { SetActiveLayout('jobs'); router('profile/applications') }}>
+                <div className='ms-2 app-font info' onClick={() => { SetActiveLayout('jobs'); router('/profile/applications') }}>
                   <p className="weight-700">Applications</p>
                   <p>See and manage applied jobs</p>
                 </div>
@@ -262,29 +312,15 @@ function UserProfile() {
 
             </div>
           </>
-
-          :
-
-          ActiveLayout == 'connections' ?
-
-            <Connections />
-
-            :
-            ActiveLayout == 'posts' ?
-
-              <ProfPost />
-
-              :
-              ActiveLayout == 'jobs' ?
-
-                <ProfJobs />
-
-                :
-                null
+        } />
 
 
-      }
 
+        <Route path='/connections' element={<Connections />} />
+        <Route path='/posts' element={<ProfPost />} />
+        <Route path='/applications' element={<ProfJobs />} />
+
+      </Routes>
 
 
     </div>

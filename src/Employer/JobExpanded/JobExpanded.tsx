@@ -39,17 +39,17 @@ function JobExpanded({ job, SetActiveLayout }: { job: jobCompany, SetActiveLayou
 
             <div className="mb-2 d-flex justify-content-between align-items-center">
 
-                <h2>{job.name}</h2>
+                <h2 className='resize-heading'>{job.name}</h2>
                 <div className="d-flex a-center p-1 ps-2 pe-3 ms-auto gap-2 c-pointer" onClick={() => { SetActiveLayout('listjobs') }}>
-                    <h6>go back</h6>
+                    <h6 className='d-none d-sm-block'>go back</h6>
                     <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} data-name="Layer 1" viewBox="0 0 32 32"><path d="M10.19,16.26a1,1,0,0,0-1,0L1.5,20.7a1,1,0,0,0,0,1.73l7.69,4.44a1,1,0,0,0,1.5-.87V23H22A9,9,0,0,0,22,5H9A1,1,0,0,0,9,7H22a7,7,0,0,1,0,14H10.69V17.13A1,1,0,0,0,10.19,16.26Zm-1.5,8L4,21.56l4.69-2.71Z" /></svg>
 
                 </div>
 
             </div>
 
-            <div className='p-2'>
-                <h4 className="weight-600 c-pointer">Details</h4>
+            <div className='p-sm-2 p-1'>
+                <h4 className="weight-600 c-pointer resize-heading">Details</h4>
                 <div className='mt-1 ms-1'>
 
                     <div className="d-flex detail-svg">
@@ -142,8 +142,8 @@ function JobExpanded({ job, SetActiveLayout }: { job: jobCompany, SetActiveLayou
                 </div>
             </div>
 
-            <div className='p-2'>
-                <h4 className="weight-600 c-pointer" data-bs-toggle="collapse" data-bs-target="#applicantCollapse">View Applicants</h4>
+            <div className='p-sm-2 p-1'>
+                <h4 className="weight-600 c-pointer resize-heading" data-bs-toggle="collapse" data-bs-target="#applicantCollapse">View Applicants</h4>
                 <div className="collapse" id="applicantCollapse">
                     <div className="ms-3 row gap-3 gy-2">
 
@@ -224,8 +224,8 @@ function JobExpanded({ job, SetActiveLayout }: { job: jobCompany, SetActiveLayou
                 </div>
             </div>
 
-            <div className='p-2'>
-                <h4 className="weight-600 c-pointer" data-bs-toggle="collapse" data-bs-target="#shortlistCollapse">View Shortlist</h4>
+            <div className='p-sm-2 p-1'>
+                <h4 className="weight-600 c-pointer resize-heading" data-bs-toggle="collapse" data-bs-target="#shortlistCollapse">View Shortlist</h4>
                 <div className="collapse" id="shortlistCollapse">
                     <div className="ms-3 row gap-3 gy-2">
                         {
@@ -441,8 +441,8 @@ function JobExpanded({ job, SetActiveLayout }: { job: jobCompany, SetActiveLayou
 
 
 
-            <div className='p-2'>
-                <h4 className="weight-600 c-pointer" data-bs-toggle="collapse" data-bs-target="#SelectedCollapse">Selected Candidates</h4>
+            <div className='p-sm-2 p-1'>
+                <h4 className="weight-600 c-pointer resize-heading" data-bs-toggle="collapse" data-bs-target="#SelectedCollapse">Selected Candidates</h4>
                 <div className="collapse" id="SelectedCollapse">
                     <div className="ms-3 row gap-3 gy-2">
                         {

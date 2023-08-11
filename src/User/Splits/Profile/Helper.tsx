@@ -12,6 +12,19 @@ export async function change_profile_picture(file:File){
         return Promise.reject(error)
     }
 } 
+
+export async function save_resume(file:File){
+
+    try {
+        const response = await CarreerInnAxios.post('user/save-resume/',{'resume':file},{headers:{'Content-Type':'multipart/form-data'}})
+        ToastSuccess('Resume saved')
+        return Promise.resolve(response)
+    } catch (error) {
+        return Promise.reject(error)
+    }
+} 
+
+
 export async function change_banner_picture(file:File){
 
     try {

@@ -11,6 +11,7 @@ import { delete_post, follow_user, get_comments, likePost, post_comment, updateT
 import { useLocation, useNavigate } from 'react-router-dom'
 import { save_unsave_post } from './Helper'
 import { success } from '../Profile/UserProfile/Includes/Jobs/Helper'
+import verified_image from '../../../AppMain/AppConfig/vaerifiedImage'
 
 const parser = (input: string) =>
     parse(input, {
@@ -41,7 +42,7 @@ function PostCard({ post, deletepost, updatePost, reportPost, updateSaved }: { p
     const routerstate = useLocation()
     const post_id = routerstate.state ? routerstate.state.post_id : null
     const router = useNavigate()
-    
+
     const delete_local_comment = (comment_id: number) => SetComments(comments.filter(c => c.id != comment_id))
 
     return (
@@ -68,7 +69,15 @@ function PostCard({ post, deletepost, updatePost, reportPost, updateSaved }: { p
                         :
                         null
                 }}>
-                    <p className="weight-700 f-medium c-pointer">{post.posted_user.username == user.username ? 'You' : post.posted_user.username}</p>
+                    <p className="weight-700 f-medium c-pointer">{post.posted_user.username == user.username ? 'You' : post.posted_user.username}
+                        {
+                            post.posted_user.is_premium_user ?
+                                <img className='ms-1' src={verified_image} width={19} height={19} alt="" />
+
+                                :
+                                null
+                        }
+                    </p>
                     <p className='m-f-small'>{post.posted_user.info}</p>
                     <p className='m-f-small'>{updateTimeSince(String(post.posted_on))}</p>
                 </div>
@@ -91,7 +100,7 @@ function PostCard({ post, deletepost, updatePost, reportPost, updateSaved }: { p
                         </>
                         :
                         <>
-                            <p className="f-medium ms-auto follow app-color me-0" onClick={() => {
+                            <p className="f-medium ms-auto follow app-color me-0 f-m-smaller" onClick={() => {
                                 follow_user(post.posted_user.id)
                                     .then(() => {
                                         setFollowing(!is_following)
@@ -160,7 +169,7 @@ function PostCard({ post, deletepost, updatePost, reportPost, updateSaved }: { p
                             </svg>
 
 
-                            <p className="f-large f-m-medium app-font">Like</p>
+                            <p className="f-large f-m-medium app-font f-m-smaller">Like</p>
                         </div>
 
                         :
@@ -190,8 +199,8 @@ function PostCard({ post, deletepost, updatePost, reportPost, updateSaved }: { p
                     setvisible(!ShowComment)
                     get_comments(post.id, NextUrl)
                         .then((data) => {
-                            console.log(data,'[[[[');
-                            
+                            console.log(data, '[[[[');
+
                             if (data.count == 0) Setnocomments(true)
 
                             SetComments([...data.results])
@@ -227,6 +236,7 @@ function PostCard({ post, deletepost, updatePost, reportPost, updateSaved }: { p
                                             username: user.username ? user.username : '',
                                             profile: user.profile ? user.profile : default_user_image,
                                             info: '',
+                                            is_premium_user: user.is_premium_user
 
                                         }, comment_text: data.comment ? data.comment : '', commented_on: date
                                     }

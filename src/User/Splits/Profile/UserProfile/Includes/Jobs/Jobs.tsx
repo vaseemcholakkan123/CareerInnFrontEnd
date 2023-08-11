@@ -3,7 +3,7 @@ import './../includes.css'
 
 import {useState,useRef} from 'react'
 import { check_continue, department, get_departments, get_users, registerComapnyForm, register_company, user } from './Helper'
-import default_user_image from '../../../../../../AppMain/AppConfig/AppConstants'
+import default_user_image, { BASE_IMAGE_URL } from '../../../../../../AppMain/AppConfig/AppConstants'
 import { useNavigate } from 'react-router-dom'
 
 function Jobs() {
@@ -127,7 +127,7 @@ function Jobs() {
                                 SetRegisterForm({...RegisterForm,ceo:user.id})
                                 SetUsers([])
                               }}>
-                                <img src={user.profile ? 'http://127.0.0.1:8000' + user.profile : default_user_image} height={50} width={50} className='rounded-circle' alt="user_profile" />
+                                <img src={user.profile ? BASE_IMAGE_URL + user.profile : default_user_image} height={50} width={50} className='rounded-circle' alt="user_profile" />
                                 <div className="ms-2">
                                   <p>{user.username}</p>
                                   <p className="f-small">{user.info}</p>
@@ -234,14 +234,14 @@ function Jobs() {
                      </div>
                   <div className="input-infos">
 
-                      <label htmlFor="banner">
+                      <label htmlFor="companybanner">
                         <p className="btn-2">Upload Banner</p>  
                       </label>  
                       <label htmlFor="logo">
                         <p className="btn-1 pt-2 pb-2 ms-2">Upload Logo*</p>  
                       </label>  
 
-                      <input type="file" id='banner' className="d-none" accept="image/*,.pdf" onChange={e=>{
+                      <input type="file" id='companybanner' className="d-none" accept="image/*,.pdf" onChange={e=>{
                         e.target.files  ? 
                 
                         SetRegisterForm({...RegisterForm,banner:e.target.files[0]})

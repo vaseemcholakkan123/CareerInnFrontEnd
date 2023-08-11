@@ -44,7 +44,7 @@ function Department() {
     return (
         <div className='w-100'>
             <header className='w-100 d-flex p-1 p-md-4 a-center'>
-                <h3>All Departments</h3>
+                <h3 className='resize-heading'>All Departments</h3>
 
                 <div className='d-flex a-center gap-2 ms-auto' ref={modalOpener} data-bs-toggle="modal" data-bs-target="#Depmodal">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" className="mercado-match" width="18" height="18" focusable="false">
@@ -62,8 +62,8 @@ function Department() {
                             return (
                                 <div key={dep.id} className='col-12 col-md-6 p-1 p-md-4 pb-md-3 r-7 app-shadow d-flex'>
                                     <div>
-                                        <h5>{dep.title}</h5>
-                                        <p className="f-small">Companies linked : {dep.no_of_company}</p>
+                                        <h5 className='resize-heading'>{dep.title}</h5>
+                                        <p className="f-small f-m-smaller">Companies linked : {dep.no_of_company}</p>
                                     </div>
 
                                     <svg data-bs-toggle="dropdown" aria-expanded="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="ms-auto me-1 bi bi-three-dots-vertical" viewBox="0 0 16 16">

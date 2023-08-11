@@ -9,6 +9,8 @@ import { RootState } from '../../AppMain/AppConfig/Redux/store'
 import './recruiters.css'
 
 import { useEffect, useState, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { validation } from '../../User/Splits/Profile/UserProfile/Includes/Projects/Helper'
 
 function Recruiters() {
   const [recruiters, SetRecruiters] = useState<user[]>([])
@@ -19,6 +21,7 @@ function Recruiters() {
   const [userIsCeo, setUserisCeo] = useState(false)
   const currentuser = useSelector((state: RootState) => state.logged_user.value)
   const [resolved, Setresolved] = useState(false)
+  const router = useNavigate()
 
 
 
@@ -51,21 +54,21 @@ function Recruiters() {
   }, [])
 
   return (
-    <div className='col-10 job-table app-shadow app-font'>
+    <div className='col-12 j-center col-md-10 job-table app-shadow app-font'>
 
       <div className="px-2">
 
         <div className="mb-2 d-flex justify-content-between align-items-center">
 
-          <h2>Recruiters / Interviewer</h2>
+          <h2 className='resize-heading'>Recruiters</h2>
 
           {
             userIsCeo ?
-              <div className='ms-auto d-flex a-center mt-1 me-4 ps-2 pe-2 btn-3'>
+              <div className='ms-auto d-flex a-center mt-1 me-md-4 me-0 ps-2 pe-md-2 pe-0 btn-3'>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" className="mercado-match" width="18" height="18" focusable="false">
                   <path d="M21 13h-8v8h-2v-8H3v-2h8V3h2v8h8z"></path>
                 </svg>
-                <p className="weight-600 ms-2" data-bs-toggle="modal" data-bs-target="#AddrecruiterModal" >Add Recruiter</p>
+                <p className="weight-600 ms-2 f-m-smaller normal-line-height" data-bs-toggle="modal" data-bs-target="#AddrecruiterModal" >Add Recruiter</p>
               </div>
               :
               null
@@ -75,7 +78,7 @@ function Recruiters() {
 
         </div>
         <div className="table-responsive">
-          {resolved ?
+          {/* {resolved ?
 
             <table className="table table-responsive table-borderless table-striped-columns">
 
@@ -95,7 +98,7 @@ function Recruiters() {
                     return (
                       <tr key={recruiter.id} className='c-pointer'>
                         <td>{recruiter.username}</td>
-                        <td><i className="fa fa-check-circle-o green"></i><span className="ms-1">{updateTimeSince(String(recruiter.date_joined!))}</span></td>
+                        <td><i className="fa fa-check-circle-o green"></i><span className="ms-1 f-m-xsmall">{updateTimeSince(String(recruiter.date_joined!))}</span></td>
                         <td>8</td>
                         <td><span className="fw-bolder">3</span></td>
                         {
@@ -134,6 +137,45 @@ function Recruiters() {
 
             </div>
 
+          } */}
+
+          {
+            resolved ?
+              recruiters.map(recruiter => {
+                return (
+                  <div className='col-12 col-md-6 p-1 p-md-4 pb-md-3 r-7 app-shadow d-flex app-shadow'>
+                    <img className='me-1 r-7 resize-phone' src={recruiter.profile ? BASE_IMAGE_URL + recruiter.profile : default_user_image} width={70} height={70} alt="" onClick={() => router(`/show-profile/${recruiter.username}`, { state: { 'user_id': recruiter.id } })} />
+                    <div className='normal-line-height' onClick={() => router(`/show-profile/${recruiter.username}`, { state: { 'user_id': recruiter.id } })}>
+                      <h5 className='resize-heading'>{recruiter.username}</h5>
+                      <p className="f-small">{recruiter.info ? recruiter.info : 'no info'}</p>
+                    </div>
+
+                    <svg data-bs-toggle="dropdown" aria-expanded="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="ms-auto me-1 bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                      <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                    </svg>
+
+                    <ul className="dropdown-menu dropdown-menu-end app-font">
+                      {
+                        userIsCeo ?
+                          <li><a className="dropdown-item" data-bs-toggle="modal" data-bs-target="#Profilemodal" onClick={() => {
+                            if(recruiter.is_ceo){
+                              validation("Can't remove CEO")
+                            }else {
+                              remove_recruiter(recruiter.id).then(() => {
+                                SetRecruiters(recruiters.filter(rec => rec.id != recruiter.id))
+                              })
+                            }
+
+                          }}>Remove Recruiter</a></li>
+                          :
+                          null
+                      }
+                    </ul>
+                  </div>
+                )
+              })
+              :
+              null
           }
 
           {/* modal */}
@@ -196,14 +238,14 @@ function Recruiters() {
                       }
                     </div>
                     <div className="modal-footer b-none pb-0 mt-5">
-                      <button type="button" className="btn-1" onClick={() => {
+                      <button type="button" className="btn-1 f-m-smaller" onClick={() => {
                         add_new_recruiter(target)
                           .then(res => {
                             SetRecruiters([...recruiters, res])
                             modalCloser.current!.click()
                           })
 
-                      }}>Register & Continue</button>
+                      }}>Add</button>
                     </div>
                   </div>
                 </div>

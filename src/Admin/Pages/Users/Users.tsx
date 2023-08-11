@@ -19,7 +19,7 @@ function Users() {
         CarreerInnAxios.get('admin/users/' + `?${nextUrl}`).then(res => {
 
             SetResolved(true)
-            Setusers(res.data.results)
+            Setusers([...Allusers,...res.data.results])
             if (res.data.next) setNextUrl(res.data.next.split('?')[1])
             else setNextUrl('')
         })
@@ -40,7 +40,7 @@ function Users() {
                 {
                     Allusers.map(usr => {
                         return (
-                            <div className='col-12 col-md-6 p-1 p-md-4 pb-md-3 r-7 app-shadow d-flex'>
+                            <div className='col-12 col-md-6 p-1 p-md-4 pb-md-3 r-7 mt-0 app-shadow d-flex mobile-border'>
                                 <img className='me-1 r-7' src={usr.profile ? usr.profile : default_user_image} width={70} height={70} alt="" onClick={() => router(`/show-profile/${usr.username}`, { state: { 'user_id': usr.id } })} />
                                 <div className='normal-line-height' onClick={() => router(`/show-profile/${usr.username}`, { state: { 'user_id': usr.id } })}>
                                     <h5>{usr.username}</h5>
@@ -55,7 +55,7 @@ function Users() {
                                     }
                                 </div>
 
-                                <svg data-bs-toggle="dropdown" aria-expanded="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="ms-auto me-1 bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                <svg data-bs-toggle="dropdown" aria-expanded="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="ms-auto me-2 mt-md-0 mt-3 me-md-1 bi bi-three-dots-vertical" viewBox="0 0 16 16">
                                     <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                                 </svg>
 

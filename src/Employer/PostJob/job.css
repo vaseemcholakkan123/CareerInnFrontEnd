@@ -85,3 +85,9 @@
         width: 90%;
     }
 }
+@media (max-width:768px) {
+    .input-job-form{
+        width: 100%;
+    }
+    
+}

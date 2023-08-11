@@ -2,7 +2,7 @@ import './nav.css'
 import { RootState } from '../../../AppMain/AppConfig/Redux/store'
 import { useSelector } from 'react-redux'
 import default_user_image from '../../../AppMain/AppConfig/AppConstants'
-import { useState, useRef, Dispatch, SetStateAction } from 'react'
+import { useState, useRef, useEffect, Dispatch, SetStateAction } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { logout } from '../../Auth/Auth'
 import { useDispatch } from 'react-redux'
@@ -10,22 +10,25 @@ import { Adduser } from '../../../AppMain/AppConfig/Redux/userReducer'
 import { check_continue } from '../../Splits/Profile/UserProfile/Includes/Jobs/Helper'
 import { validation } from '../../Splits/Profile/UserProfile/Includes/Projects/Helper'
 import { debounce } from '../../Splits/Profile/Helper'
+import CarreerInnAxios from '../../../AppMain/AppConfig/AxiosConfig'
+import verified_image from '../../../AppMain/AppConfig/vaerifiedImage'
 
 
-function Navbar({ SetActiveLayout, ActiveLayout, SetQuery, NotificationCount }: { NotificationCount: number, SetQuery: Dispatch<SetStateAction<string>>, SetActiveLayout: Dispatch<SetStateAction<string>>, ActiveLayout: string }) {
+function Navbar({ SetActiveLayout, ActiveLayout, NotificationCount }: { NotificationCount: number, SetActiveLayout: Dispatch<SetStateAction<string>>, ActiveLayout: string }) {
 
   const Loggeduser = useSelector((state: RootState) => state.logged_user.value)
   const [show, setVisible] = useState(false)
   const router = useNavigate()
   const offcanvasCloser = useRef<HTMLButtonElement>(null)
-
+  const user = useSelector((state: RootState) => state.logged_user.value)
   const [searchLoading, SetSearchloading] = useState(false)
   const searchInp = useRef<HTMLInputElement>(null)
 
   const search_debounce = debounce((query) => {
     if (query != '') {
-      SetSearchloading(true)
-      SetQuery(query)
+      SetSearchloading(false)
+      SetActiveLayout('search-results')
+      router('/search', { state: { 'query': query } });
     }
     else {
       SetSearchloading(false)
@@ -33,13 +36,30 @@ function Navbar({ SetActiveLayout, ActiveLayout, SetQuery, NotificationCount }: 
 
   })
 
+  const [PremiumValidity, SetPremiumValidity] = useState(0)
+
+  useEffect(() => {
+    CarreerInnAxios.get('user/get-premium-validity/')
+      .then(res => {
+        console.log(res);
+        if (res.data == 'premium_ended') {
+          validation("Premium Ended ,Login again")
+          localStorage.clear()
+          router('/Auth/login')
+        }
+        else if (res.data == 'valid') SetPremiumValidity(0)
+        else SetPremiumValidity(res.data)
+
+      })
+  }, [])
+
   return (
     <>
       <div className='main-navbar app-font d-md-flex d-none'>
         <h3 className='nav-title app-color' onClick={() => router('/')}>CareerInn</h3>
         <div className="search-navbar">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="20px" height="20px"><path d="M 21 3 C 11.621094 3 4 10.621094 4 20 C 4 29.378906 11.621094 37 21 37 C 24.710938 37 28.140625 35.804688 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460938 28.085938 38 24.222656 38 20 C 38 10.621094 30.378906 3 21 3 Z M 21 5 C 29.296875 5 36 11.703125 36 20 C 36 28.296875 29.296875 35 21 35 C 12.703125 35 6 28.296875 6 20 C 6 11.703125 12.703125 5 21 5 Z" /></svg>
-          <input ref={searchInp} onChange={e => search_debounce(e.target.value)} type="text" className='nav-search app-font' placeholder='Search anything...' />
+          <input ref={searchInp} onChange={e => { SetSearchloading(true); search_debounce(e.target.value) }} type="text" className='nav-search app-font' placeholder='Search anything...' />
           <div id={searchLoading ? '' : 'hidden-search-loading'} className="lds-spinner lds-spinner2 lds-spinner4 h-0 me-3 pe-2" ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 
         </div>
@@ -201,7 +221,16 @@ function Navbar({ SetActiveLayout, ActiveLayout, SetQuery, NotificationCount }: 
             <div>
               <div className="p-2">
                 <img src={Loggeduser.profile ? Loggeduser.profile : default_user_image} width={70} height={70} className='rounded-circle mt-0 mb-2' alt="" />
-                <h2>{Loggeduser.username}</h2>
+                <div className="d-flex a-center">
+                  <h2>{Loggeduser.username}</h2>
+                  {
+                    Loggeduser.is_premium_user ?
+                      <img src={verified_image} height={18} width={18} alt="" />
+
+                      :
+                      null
+                  }
+                </div>
                 <p className='ms-1' onClick={() => { router('/profile'); offcanvasCloser.current!.click() }}>View Profile</p>
               </div>
               <div className="or-1 w-100 mt-2"></div>
@@ -212,12 +241,62 @@ function Navbar({ SetActiveLayout, ActiveLayout, SetQuery, NotificationCount }: 
                 <h6>Saved Items</h6>
               </div>
 
-              <div className="a-center d-flex gap-1 p-2 mt-1">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" width="21" height="21" focusable="false">
-                  <path d="M20 20a3.36 3.36 0 001-2.39V6.38A3.38 3.38 0 0017.62 3H6.38A3.36 3.36 0 004 4z" fill="#f8c77e"></path>
-                  <path d="M4 4a3.36 3.36 0 00-1 2.38v11.24A3.38 3.38 0 006.38 21h11.24A3.36 3.36 0 0020 20z" fill="#e7a33e"></path>
+              {
+                !user.is_premium_user ?
+                  <div className="a-center d-flex gap-1 p-2 mt-1" onClick={() => {
+                    router('/premium');
+                    offcanvasCloser.current!.click()
+                  }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" width="21" height="21" focusable="false">
+                      <path d="M20 20a3.36 3.36 0 001-2.39V6.38A3.38 3.38 0 0017.62 3H6.38A3.36 3.36 0 004 4z" fill="#f8c77e"></path>
+                      <path d="M4 4a3.36 3.36 0 00-1 2.38v11.24A3.38 3.38 0 006.38 21h11.24A3.36 3.36 0 0020 20z" fill="#e7a33e"></path>
+                    </svg>
+                    <h6>Try Premium</h6>
+                  </div>
+
+                  :
+                  PremiumValidity != 0 ?
+                    <div className="a-center d-flex gap-1 p-2 mt-1 c-pointer" onClick={() => {
+                      router('/premium');
+                      offcanvasCloser.current!.click()
+                    }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" width="21" height="21" focusable="false">
+                        <path d="M20 20a3.36 3.36 0 001-2.39V6.38A3.38 3.38 0 0017.62 3H6.38A3.36 3.36 0 004 4z" fill="#f8c77e"></path>
+                        <path d="M4 4a3.36 3.36 0 00-1 2.38v11.24A3.38 3.38 0 006.38 21h11.24A3.36 3.36 0 0020 20z" fill="#e7a33e"></path>
+                      </svg>
+                      <div className='normal-line-height'>
+                        <p>Renew Premium</p>
+                        <p className="f-small">ends in {PremiumValidity} days</p>
+                      </div>
+                    </div>
+
+                    :
+                    null
+              }
+
+              <div className="d-flex gap-1 a-center p-2" onClick={() => {
+
+                check_continue().then(res => {
+                  if (res.data.var == 'continue') {
+                    localStorage.setItem('company_id', res.data.id)
+                    router('/employer')
+                    offcanvasCloser.current!.click()
+                  }
+                  else {
+                    validation('Register company from your profile')
+
+                  }
+                })
+
+              }}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="var(--primary-color)" width="24" height="24" focusable="false">
+                  <circle cx="12" cy="4" r="2" style={{ 'isolation': 'isolate' }} opacity=".75"></circle>
+                  <path d="M21 10H3a1 1 0 00-1 1v10a1 1 0 001 1h18a1 1 0 001-1V11a1 1 0 00-1-1zm-5 9H8v-2h8v2zm2-4H6v-2h12v2z"></path>
+                  <g opacity=".6">
+                    <path d="M9.57 5.75l-2.41 4.83 1.68.84 2.28-4.57a3 3 0 01-1.55-1.1zM14.43 5.75a3 3 0 01-1.55 1.1l2.28 4.57 1.68-.84z" style={{ 'isolation': 'isolate' }} opacity=".55"></path>
+                  </g>
                 </svg>
-                <h6>Try Premium</h6>
+                <h6 className="mt-1">Post job</h6>
               </div>
 
 

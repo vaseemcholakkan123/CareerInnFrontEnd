@@ -3,6 +3,7 @@ export type not_logged_user = {
     username : string,
     profile : string | null,
     info : string | null,
+    is_premium_user : boolean,
 
 }
 

@@ -48,7 +48,7 @@ export const HandleLogin = async (formEvent: React.SyntheticEvent, SetLoading: D
             if(adminLog) localStorage.setItem('admin','true')
            
 
-            successLogin({ ...response.data.user, password: passwordValue });
+            await successLogin({ ...response.data.user, password: passwordValue });
 
             return response.data.user;
 
@@ -105,6 +105,14 @@ const ValidateUsernameAndEmail = async (query: string, query2: string) => {
 
     if (query.length <= 5) {
         AuthToastFailure('Username should have atleast 6 characters!')
+        return Promise.reject()
+    }
+    if (query.length >= 10) {
+        AuthToastFailure('Username should only contain 9 characters!')
+        return Promise.reject()
+    }
+    if(query.trim()){
+        AuthToastFailure('Username should not contain space!')
         return Promise.reject()
     }
     if (query.includes('@')) {
@@ -179,7 +187,8 @@ async function handleResendOTP(count: number, loginf: boolean = false) {
             showCancelButton: false,
             customClass: {
                 confirmButton: 'btn-swal',
-                cancelButton: 'btn-2'
+                cancelButton: 'btn-2',
+                title:'app-font',
             },
             confirmButtonText: 'Verify',
             showLoaderOnConfirm: true,
@@ -241,7 +250,7 @@ export const handleAccountCreation = (FormEvent: React.SyntheticEvent, SetLoadin
     const password2_val = password2.value;
     let valid = PasswordValid(password1_val, password2_val)
     let count = 0
-
+    
 
 
     if (valid == 0) {
@@ -303,6 +312,7 @@ export const handleAccountCreation = (FormEvent: React.SyntheticEvent, SetLoadin
 
             })
             .catch(() => {
+                
                 SetLoading(false)
                 window.location.href = '/'
             })

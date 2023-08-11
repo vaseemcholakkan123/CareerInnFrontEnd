@@ -129,7 +129,7 @@ function Posts(prop: props) {
                             </label>
                             <input ref={ImageInput} onChange={() => {
                                 ImageInput.current!.files ? SetPostForm({ ...postform, content_image: ImageInput.current!.files[0] }) : null
-                            }} type="file" className='d-none' accept="image/*,.pdf" id='image' />
+                            }} type="file" className='d-none' accept="image/*" id='image' />
                             <img ref={postImage} className='w-100' src={postform.content_image ? URL.createObjectURL(postform.content_image) : ''} alt="" />
                         </div>
                         <div className="modal-footer bt-none">

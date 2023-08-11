@@ -47,7 +47,7 @@ function FormPageTwo({ SetActiveFormPage, SetJobForm, job_form, EditJob }: { Set
 
 
     return (
-        <div className='p-1 mt-2 d-flex f-coloumn'>
+        <div className='p-1 ps-md-1 ps-0 mt-md-2 mt-0 d-flex f-coloumn'>
             <div className="form-one">
                 <div className='mb-2'>
                     <p className="form-label">Requirements</p>
@@ -58,7 +58,7 @@ function FormPageTwo({ SetActiveFormPage, SetJobForm, job_form, EditJob }: { Set
                                     let new_reqs = job_form.requirements
                                     new_reqs[i] = e.target.value
                                     SetJobForm({ ...job_form, requirements: new_reqs })
-                                }} className='input-job-form m-1' placeholder={i == 0 ? 'Ex - 3+ years of relevant experience' : ''} />
+                                }} className='input-job-form m-1 ms-md-1 ms-0 mb-me-1 me-0 f-m-smaller' placeholder={i == 0 ? 'Ex - 3+ years of relevant experience' : ''} />
                             )
                         })
                     }
@@ -88,7 +88,7 @@ function FormPageTwo({ SetActiveFormPage, SetJobForm, job_form, EditJob }: { Set
                                     new_respo[i] = e.target.value
                                     SetJobForm({ ...job_form, responsibilities: new_respo })
 
-                                }} type="text" className='input-job-form m-1' placeholder={i == 0 ? 'Ex - Plan, build, develop, and execute microsites' : ''} />
+                                }} type="text" className='input-job-form m-1 ms-md-1 ms-0 mb-me-1 me-0 f-m-smaller' placeholder={i == 0 ? 'Ex - Plan, build, develop, and execute microsites' : ''} />
                             )
                         })
                     }
@@ -111,10 +111,10 @@ function FormPageTwo({ SetActiveFormPage, SetJobForm, job_form, EditJob }: { Set
                 <div >
                     <p className="form-label mb-0">skills required</p>
 
-                    <div className="input-infos mt-0">
-                        <div className="d-flex">
-                            <p>Select from available skills or add one</p>
-                            <div className="d-flex w-f ms-auto gap-1 me-5 a-center normal-line-height c-pointer" data-bs-toggle="modal" data-bs-target="#AddSkillModal">
+                    <div className="input-infos mt-0 ps-0 ps-md-1">
+                        <div className="pt-1 pb-1 d-sm-flex">
+                            <p className='col-sm-6'>Select from available skills or add one</p>
+                            <div className="d-flex col-sm-6 col-12 w-f ms-md-5 gap-1 me-md-1 a-center normal-line-height c-pointer" data-bs-toggle="modal" data-bs-target="#AddSkillModal">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" className="mercado-match" width="20" height="20" focusable="false">
                                     <path d="M21 13h-8v8h-2v-8H3v-2h8V3h2v8h8z"></path>
                                 </svg>
@@ -124,7 +124,7 @@ function FormPageTwo({ SetActiveFormPage, SetJobForm, job_form, EditJob }: { Set
                         </div>
                         <div className='skill-parent'>
 
-                            <input ref={selectSkillInp} type="text" placeholder="Ex - MERN Stack" className='input-job-form' onChange={e => {
+                            <input ref={selectSkillInp} type="text" placeholder="Ex - MERN Stack" className='input-job-form f-m-smaller' onChange={e => {
                                 skills_debounce(e.target.value)
 
                             }} />
@@ -181,7 +181,7 @@ function FormPageTwo({ SetActiveFormPage, SetJobForm, job_form, EditJob }: { Set
                         job_form.questions.map((x, i) => {
                             return (
                                 <div key={i}>
-                                    <input value={x.name} key={i} type="text" className='input-job-form m-1' placeholder={job_form.questions.length < 2 ? 'Ex - Are you comfortable working in a hybrid setting?' : ''} onChange={(e) => {
+                                    <input value={x.name} key={i} type="text" className='input-job-form m-1 ms-md-1 ms-0 mb-me-1 me-0 f-m-smaller' placeholder={job_form.questions.length < 2 ? 'Ex - Are you comfortable working in a hybrid setting?' : ''} onChange={(e) => {
                                         let temp = job_form.questions
                                         temp[i].name = e.target.value
                                         SetJobForm({ ...job_form, questions: temp })
@@ -281,8 +281,8 @@ function FormPageTwo({ SetActiveFormPage, SetJobForm, job_form, EditJob }: { Set
 
 
             <div className='form-2-btns'>
-                <p className="app-link w-25 text-center f-large" onClick={() => { SetActiveFormPage('one') }}>Previous Page</p>
-                <p className="btn-1 w-25 text-center" onClick={() => {
+                <p className="app-link w-25 text-center f-large" onClick={() => { SetActiveFormPage('one') }}>Previous</p>
+                <p className="btn-1 ps-3 pe-3 pt-2 pb-2 text-center" onClick={() => {
                     EditJob ?
 
                         update_job(job_form,EditJob.id)

@@ -40,14 +40,14 @@ function PostJob({ SetActiveLayout ,EditJob }: { SetActiveLayout: Dispatch<SetSt
         <div className="header">
           {
             ActiveFormPage == 'one' ?
-              <h1 className='weight-600'>Find a great hire,fast</h1>
+              <h1 className='weight-600 resize-heading'>Find a great hire,fast</h1>
 
               :
               null
           }
           <div className="d-flex a-center ms-auto c-pointer me-4" onClick={() => { SetActiveLayout('listjobs') }}>
             <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} data-name="Layer 1" viewBox="0 0 32 32"><path d="M10.19,16.26a1,1,0,0,0-1,0L1.5,20.7a1,1,0,0,0,0,1.73l7.69,4.44a1,1,0,0,0,1.5-.87V23H22A9,9,0,0,0,22,5H9A1,1,0,0,0,9,7H22a7,7,0,0,1,0,14H10.69V17.13A1,1,0,0,0,10.19,16.26Zm-1.5,8L4,21.56l4.69-2.71Z" /></svg>
-            <p className='ms-2'>back to jobs</p>
+            <p className='ms-2 d-sm-block d-none'>back to jobs</p>
           </div>
         </div>
 

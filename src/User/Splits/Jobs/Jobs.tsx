@@ -87,7 +87,6 @@ function Jobs() {
             otherfilterenabled = true
             url += 'skills=' + Filters.skills_contain.map(sk => sk.id)
         }
-        console.log(url, 'llllllll');
 
         if (nextUrl == '') {
             if (Filters.department.title != '' || Filters.skills_contain.length > 0 || Filters.work_time != '' || Filters.work_type != '') url += `&${nextUrl}`
@@ -372,7 +371,7 @@ function Jobs() {
                             }
 
                             {
-                                !Jobs[0] && resolved && Filters.department.title != '' || Filters.skills_contain.length > 0 || Filters.work_time != '' || Filters.work_type != '' ?
+                                !Jobs[0] && resolved && (Filters.department.title != '' || Filters.skills_contain.length != 0 || Filters.work_time != '' || Filters.work_type != '') ?
                                     <div className='col-12 d-flex acenter j-center m-2 mt-0  pt-1 p-2'>
                                         <p>No job matches this filter.</p>
                                     </div>

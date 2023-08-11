@@ -67,7 +67,7 @@ export type application_form = {
 
 }
 
-export async function apply_for_job(form:application_form ,job_id:number,oqs:question[]) {
+export async function apply_for_job(form:application_form ,job_id:number,oqs:question[],is_premium_user?:boolean){
 
     let validated = true
     let answers_validation = true
@@ -85,7 +85,7 @@ export async function apply_for_job(form:application_form ,job_id:number,oqs:que
         validation('Answer all questions')
         return Promise.reject()
     }
-    if(!form.resume){
+    if(!form.resume && !is_premium_user){
         validation('Attach resume to apply')
         return Promise.reject()
     }

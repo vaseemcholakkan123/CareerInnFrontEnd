@@ -199,7 +199,9 @@ a:hover {
 #hidden {
   display: none;
 }
-
+.outline-none{
+  outline: none !important;
+}
 .offcanvas-start {
   visibility: visible !important;
   width: 69vw !important;

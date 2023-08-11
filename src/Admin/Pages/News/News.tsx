@@ -45,7 +45,7 @@ function News() {
     return (
         <div className='w-100'>
             <header className='w-100 d-flex p-1 p-md-4 a-center'>
-                <h3>CareerInn News</h3>
+                <h3 className='resize-heading ps-1 ps-md-0'>CareerInn News</h3>
 
                 <div ref={modalOpener} className='d-flex a-center gap-2 ms-auto btn-3' data-bs-toggle="modal" data-bs-target="#Newsmodal">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" className="mercado-match" width="18" height="18" focusable="false">
@@ -61,10 +61,10 @@ function News() {
                 {Allnews[0] && resolved ?
                     Allnews.map(news => {
                         return (
-                            <div key={news.id} className='col-12 col-md-6 p-1 p-md-4 r-7 pb-md-3 app-shadow d-flex'>  
+                            <div key={news.id} className='col-12 col-md-6 p-md-1 p-2 pt-md-1 pb-md-1 pt-3 pb-3 p-md-4 mobile-border mt-0 r-7 pb-md-3 app-shadow d-flex'>  
                                 <div>
-                                    <h5>{news.title}.</h5>
-                                    <p className="f-small">Posted {updateTimeSince(String(news.posted_time))}</p>
+                                    <h5 className='resize-heading'>{news.title}.</h5>
+                                    <p className="f-small f-m-smaller">Posted {updateTimeSince(String(news.posted_time))}</p>
                                 </div>
 
                                 <svg data-bs-toggle="dropdown" aria-expanded="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="ms-auto me-1 bi bi-three-dots-vertical" viewBox="0 0 16 16">
@@ -73,7 +73,7 @@ function News() {
 
                                 <ul className="dropdown-menu dropdown-menu-end app-font">
                                     <li><p className="dropdown-item weight-700" onClick={() => { updatecb(news.id) }} >Edit News</p></li>
-                                    <li className='dropdown-item c-pointer' onClick={() => {
+                                    <li className='dropdown-item c-pointer f-m-smaller' onClick={() => {
                                         delete_news(news.id)
                                             .then(() => {
                                                 SetNews(Allnews.filter(n => n.id != news.id))

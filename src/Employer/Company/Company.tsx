@@ -91,7 +91,7 @@ function Company() {
     },[])
 
   return (
-    <div className='company-main col-10 app-font'>
+    <div className='company-main app-font col-12 j-center col-md-10'>
            {
              Company ? 
             <div className="holder">

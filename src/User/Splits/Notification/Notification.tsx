@@ -64,12 +64,12 @@ function Notification() {
                                     notification.rel_img || notification.type == 'Connection' ?
                                         <img src={notification.rel_img ? BASE_IMAGE_URL + notification.rel_img : default_user_image} className={notification.rel_img?.includes('profile') || notification.type != 'Post' ? 'resize-phone rounded-circle' : 'resize-phone'} width={56} height={56} alt="" onClick={() => {
                                             if (notification.type === 'Post') {
-                                                router('/view-post', { state: { 'post_id': notification.link_thread } })
+                                                router('/', { state: { 'post_id': notification.link_thread } })
                                             }
                                             else if (notification.type == 'Job') {
                                                 if(notification.link_thread == 'redirect'){
                                                     router('/interview')
-                                                }else router('/view-job', { state: { 'job_id': notification.link_thread } })
+                                                }else router('/jobs', { state: { 'job_id': notification.link_thread } })
                                             }
                                             else if (notification.type == 'Connection') {
                                                 router(`/show-profile/${notification.content.split('has')[0].trim()}`,{state:{'user_id':notification.link_thread}})
@@ -82,12 +82,12 @@ function Notification() {
                                 }
                                 <div className={notification.rel_img || notification.type == 'Connection' ? 'normal-line-height mt-auto mb-3 ms-2' : 'ps-4 normal-line-height mt-auto mb-3 ms-2'} onClick={() => {
                                     if (notification.type === 'Post') {
-                                        router('/view-post', { state: { 'post_id': notification.link_thread } })
+                                        router('/', { state: { 'post_id': notification.link_thread } })
                                     }
                                     else if (notification.type == 'Job') {
                                         if(notification.link_thread == 'redirect'){
                                             router('/interview')
-                                        }else router('/view-job', { state: { 'job_id': notification.link_thread } })
+                                        }else router('/jobs', { state: { 'job_id': notification.link_thread } })
                                     }
                                     else if (notification.type == 'Connection') {
                                         router(`/show-profile/${notification.content.split('has')[0].trim()}`,{state:{'user_id':notification.link_thread}})

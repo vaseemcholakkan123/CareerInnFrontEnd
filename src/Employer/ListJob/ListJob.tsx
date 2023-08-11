@@ -33,7 +33,7 @@ function ListJob() {
     }, [])
 
     return (
-        <div className='col-10 job-table app-shadow app-font'>
+        <div className='col-12 j-center col-md-10 job-table app-shadow app-font p-md-1 p-0'>
 
             {
                 ActiveLayout == 'listjobs' ?
@@ -42,11 +42,11 @@ function ListJob() {
 
                         <div className="mb-2 d-flex justify-content-between align-items-center">
 
-                            <h2>{CompanyJobs.length == 0 ? 'Find a great hire' : 'Posted jobs'}</h2>
+                            <h2 className='resize-heading'>{CompanyJobs.length == 0 ? 'Find a great hire' : 'Posted jobs'}</h2>
                             {/* <div className="like-input w-25 p-1 ps-2 ms-auto">
                     <input type="text" className="app-input" placeholder='search by name' />
                 </div> */}
-                            <div className='ms-auto d-flex a-center mt-1 me-4 ps-2 pe-2 btn-3' onClick={() => { SetActveLayout('postjob') }} >
+                            <div className='ms-auto d-flex a-center mt-1 me-md-4 me-1 ps-2 pe-md-2 pe-0 btn-3' onClick={() => { SetActveLayout('postjob') }} >
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" className="mercado-match" width="18" height="18" focusable="false">
                                     <path d="M21 13h-8v8h-2v-8H3v-2h8V3h2v8h8z"></path>
                                 </svg>
@@ -89,12 +89,12 @@ function ListJob() {
 
                                         <thead className='table-striped'>
                                             <tr className="bg-light">
-                                                <th scope="col" >Title</th>
-                                                <th scope="col" >Posted Date</th>
-                                                <th scope="col" >Applicants</th>
-                                                <th scope="col" >Interviewed</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col">Action</th>
+                                                <th scope="col" ><p className="f-m-small">Title</p></th>
+                                                <th scope="col" ><p className="f-m-smaller d-flex gap-1">Posted <span className='d-none d-sm-block'> Date</span> </p></th>
+                                                <th scope="col" ><p className="f-m-small">Applicants</p></th>
+                                                <th scope="col" ><p className="f-m-small">Interviewed</p></th>
+                                                <th scope="col"><p className="f-m-small">Status</p></th>
+                                                <th scope="col"><p className="f-m-small">Action</p></th>
                                             </tr>
                                         </thead>
                                         <tbody className='table-striped'>
@@ -104,11 +104,11 @@ function ListJob() {
                                                     return (
                                                         <>
                                                             <tr key={job.name} className={job.is_closed ? 'table-danger c-pointer' : 'table-info c-pointer'} >
-                                                                <td onClick={() => { SetActveLayout('x'); ExpandJob(job) }}>{job.name}</td>
-                                                                <td onClick={() => { SetActveLayout('x'); ExpandJob(job) }}><i className="fa fa-check-circle-o green"></i><span className="ms-1">{updateTimeSince(String(job.posted_on))}</span></td>
+                                                                <td onClick={() => { SetActveLayout('x'); ExpandJob(job) }}><span className='f-msmaller'> {job.name}</span> </td>
+                                                                <td onClick={() => { SetActveLayout('x'); ExpandJob(job) }}><i className="fa fa-check-circle-o green"></i><span className="ms-1 f-m-smaller">{updateTimeSince(String(job.posted_on)).split(',') ? updateTimeSince(String(job.posted_on)).split(',')[0] : updateTimeSince(String(job.posted_on))}</span></td>
                                                                 <td onClick={() => { SetActveLayout('x'); ExpandJob(job) }}>{job.applicants_count}</td>
-                                                                <td onClick={() => { SetActveLayout('x'); ExpandJob(job) }}><span className="fw-bolder">3</span></td>
-                                                                <td onClick={() => { SetActveLayout('x'); ExpandJob(job) }}><span className="fw-bolder">{job.is_closed ? 'closed' : 'active'}</span></td>
+                                                                <td onClick={() => { SetActveLayout('x'); ExpandJob(job) }}><span className="fw-bolder f-m-smaller">{job.interview_count}</span></td>
+                                                                <td onClick={() => { SetActveLayout('x'); ExpandJob(job) }}><span className="fw-bolder f-m-smaller">{job.is_closed ? 'closed' : 'active'}</span></td>
                                                                 <td className='text-center' data-bs-toggle="dropdown" aria-expanded="false">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-three-dots" viewBox="0 0 16 16">
                                                                         <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />

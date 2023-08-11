@@ -20,14 +20,13 @@ function FormPageOne({ SetActiveFormPage, SetJobForm, job_form }: { job_form: ad
                         <p className="form-label">Workplace type</p>
                         <div className="d-flex gap-3 ms-1">
                             <div className='d-flex gap-2'>
-                                <input type="checkbox" id='WFH' name='work-type' checked={job_form.job_type == 'WFH'} onChange={() => {
+                                <input type="checkbox" id='WFH' name='work-type' checked={job_form.job_type == 'On-Site'} onChange={() => {
                                     SetJobForm({ ...job_form, job_type: 'On-Site' })
                                 }} />
                                 <label htmlFor="WFH">
                                     <p className="weight-500">On-Site</p>
                                 </label>
                             </div>
-                            {BASE_URL}
 
                             <div className='d-flex gap-2'>
                                 <input type="checkbox" id='Office' name='work-type' checked={job_form.job_type == 'Hybrid'} onChange={() => {
@@ -50,7 +49,7 @@ function FormPageOne({ SetActiveFormPage, SetJobForm, job_form }: { job_form: ad
                     </div>
                     <div className="col-12 col-md-7">
                         <p className="form-label">Job type</p>
-                        <select value={job_form.job_time} id="" className='p-1 r-7' onChange={e=>SetJobForm({...job_form,job_time:e.target.value})}>
+                        <select value={job_form.job_time} id="" className='p-sm-1 p-0 r-7' onChange={e=>SetJobForm({...job_form,job_time:e.target.value})}>
                             <option value="">select</option>
                             <option value="Full-time" className='p-1'>Full-time</option>
                             <option value="Part-time" className='p-1'>Part-time</option>
@@ -77,7 +76,7 @@ function FormPageOne({ SetActiveFormPage, SetJobForm, job_form }: { job_form: ad
 
             </div>
             <div className='form1-btn'>
-                <p className="btn-1 ms-auto w-25 text-center " onClick={() => { SetActiveFormPage('twe') }}>continue</p>
+                <p className="btn-1 ms-auto p-2 ps-md-3 pe-md-3" onClick={() => { SetActiveFormPage('twe') }}>continue</p>
             </div>
         </div>
     )

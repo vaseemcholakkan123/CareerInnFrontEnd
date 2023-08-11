@@ -33,6 +33,7 @@ export type user = {
     info : string | null,
     date_joined?:Date,
     is_ceo?:boolean,
+    is_premium_user?:boolean,
 }
 
 export type registerComapnyForm = {

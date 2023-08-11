@@ -5,6 +5,8 @@ import PostLeft from '../SideBars/left/PostLeft/PostLeft';
 import Posts from '../Splits/Posts/Posts';
 import PostRight from '../SideBars/right/PostRight/PostRight';
 import UserProfile from '../Splits/Profile/UserProfile/UserProfile';
+import { Routes,Route } from "react-router-dom"
+
 import { useNavigate } from 'react-router-dom';
 import JobRight from '../SideBars/right/JobRight/JobRight';
 import Jobs from '../Splits/Jobs/Jobs';
@@ -18,12 +20,13 @@ import { NOTIFICATION_END_POINT } from '../../AppMain/AppConfig/AppConstants';
 import { success } from '../Splits/Profile/UserProfile/Includes/Jobs/Helper';
 import CarreerInnAxios from '../../AppMain/AppConfig/AxiosConfig';
 import Messaging from '../Splits/Messaging/Messaging';
+import SearchParent from '../Splits/SearchResults/SearchParent';
+import Premium from '../Splits/Premium/Premium';
 
 function HomePage() {
   const routerstate = useLocation()
   const [activeLayout, setActiveLayout] = useState('posts')
   const router = useNavigate()
-  const [searchQuery, SetSearchquery] = useState('')
   const [NotificationCount, SetNotificationCount] = useState(0)
 
   if (!localStorage.getItem('user')) {
@@ -31,39 +34,6 @@ function HomePage() {
   }
 
   useEffect(() => {
-    if (window.location.pathname.split('/')[1] == 'profile') {
-      setActiveLayout('profile')
-    }
-    if (window.location.pathname.split('/')[1] == 'jobs') {
-      setActiveLayout('jobs')
-    }
-    if (window.location.pathname.split('/')[1] == '') {
-      setActiveLayout('posts')
-    }
-    if (window.location.pathname.split('/')[1] == 'notification') {
-      setActiveLayout('notifications')
-    }
-    if (window.location.pathname.split('/')[1] == 'view-post') {
-      setActiveLayout('posts')
-    }
-    if (window.location.pathname.split('/')[1] == 'view-job') {
-      setActiveLayout('jobs')
-    }
-    if (window.location.pathname.split('/')[1] == 'show-profile') {
-      setActiveLayout('show_user')
-    }
-    if (window.location.pathname.split('/')[1] == 'saved-posts') {
-      setActiveLayout('saved_posts')
-    }
-    if (window.location.pathname.split('/')[1] == 'messaging') {
-      setActiveLayout('messaging')
-    }
-
-    if (!localStorage.getItem('user')) {
-      router('/Auth/login')
-    }
-
-    // if(searchQuery != )
 
     let notification_socket = new WebSocket(NOTIFICATION_END_POINT + `?token=${localStorage.getItem('access-token')}`)
 
@@ -82,17 +52,16 @@ function HomePage() {
 
 
 
-  }, [window.location.pathname, searchQuery])
+  }, [])
 
   // console.log(useSelector(( state:RootState )=> state.logged_user.value));
 
   return (
     <>
-      <Navbar NotificationCount={NotificationCount} SetQuery={SetSearchquery} ActiveLayout={activeLayout} SetActiveLayout={setActiveLayout} />
-      <div className={activeLayout == 'messaging' ? 'row user-home-container j-center' : 'row user-home-container'}>
-        <div id={activeLayout == 'messaging' ? 'hidden' : ''} className={activeLayout != 'posts' ? "col-2 d-md-block d-none user-home-holder show2" : "col-sm-3 d-md-block d-none user-home-holder"} >
+      <Navbar NotificationCount={NotificationCount} ActiveLayout={activeLayout} SetActiveLayout={setActiveLayout} />
+      <div className={activeLayout == 'messaging' || activeLayout == 'search-results' || window.location.pathname.split('/')[1] == 'premium' ? 'row user-home-container j-center' : 'row user-home-container'}>
+        <div id={activeLayout == 'messaging' || activeLayout == 'search-results' || window.location.pathname.split('/')[1] == 'premium' ? 'hidden' : ''} className={activeLayout != 'posts' ? "col-2 d-md-block d-none user-home-holder show2" : "col-sm-3 d-md-block d-none user-home-holder"} >
           <div className="left col-inside app-shadow" id={activeLayout != 'posts' ? 'display-none' : ''} >
-
             {
               activeLayout === 'posts' || activeLayout === 'saved_posts' ?
 
@@ -108,9 +77,9 @@ function HomePage() {
           </div>
         </div>
 
-        <div className={activeLayout === 'posts' ? "col-12 col-md-9 col-lg-6" : activeLayout == 'messaging' ? "col-12 col-md-11 col-lg-7" :  "col-12 col-md-11 col-lg-7"}>
-          <div className={activeLayout === 'messaging' ? "col-inside app-shadow main-div pe-2 w-100"  : "col-inside app-shadow main-div"}>
-            {
+        <div className={activeLayout === 'posts' ? "col-12 col-md-9 col-lg-6" : activeLayout == 'messaging' || activeLayout == 'search-results' || window.location.pathname.split('/')[1] == 'premium' ? "col-12 col-md-11 col-lg-7" : "col-12 col-md-11 col-lg-7"}>
+          <div className={activeLayout === 'messaging' || activeLayout == 'search-results' || window.location.pathname.split('/')[1] == 'premium' ? "col-inside app-shadow main-div pe-2 w-100" : "col-inside app-shadow main-div"}>
+            {/* {
               activeLayout === 'posts' ?
 
                 <Posts />
@@ -143,12 +112,33 @@ function HomePage() {
                           :
 
                           activeLayout == 'messaging' ?
-                          <Messaging />
-                          :
+                            <Messaging />
+                            :
+                            activeLayout == 'search-results' ?
+                              <SearchParent Searchquery={searchQuery} />
+                              :
 
-                          null
+                              null
 
-            }
+            } */}
+
+            {/*  changing to routes */}
+
+            <Routes>
+              <Route path='/' element={<Posts />} />
+              <Route path='/profile/*' element={<UserProfile />} />
+              <Route path='/jobs' element={<Jobs />} />
+              <Route path='/messaging' element={<Messaging />} />
+              <Route path='/notification' element={<Notification />} />
+              <Route path='/show-profile/*' element={<DifferentProfile />} />
+              <Route path='/saved-posts' element={<SavedPost />} />
+              <Route path='/search' element={<SearchParent />} />
+              <Route path='/premium/*' element={<Premium />} />
+
+              
+            </Routes>
+            
+
           </div>
         </div>
 
@@ -167,7 +157,7 @@ function HomePage() {
                   :
 
 
-                  activeLayout == 'profile' || activeLayout == 'saved_posts' || activeLayout == 'show_user' || activeLayout == 'notifications' ?
+                  activeLayout == 'profile' || activeLayout == 'messaging' || activeLayout == 'saved_posts' || activeLayout == 'show_user' || activeLayout == 'notifications' ?
 
                     < PeopleKnow />
                     :
