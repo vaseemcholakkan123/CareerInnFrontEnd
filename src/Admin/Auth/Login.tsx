@@ -16,6 +16,7 @@ function Login() {
     const [loading, SetLoading] = useState(false)
     const dispatcher = useDispatch();
 
+    if(localStorage.getItem("user")) router('/')
 
 
     return (
