@@ -14,6 +14,8 @@ var location = window.location
 let wsStart = 'ws://'
 
 if (location.protocol == 'https:') wsStart = 'wss://'
+console.log(location.protocol , location.protocol == 'https:' , wsStart);
+
 
 export const NOTIFICATION_END_POINT = wsStart + 'moddroid.tk/careerinn-api/notifications/'
 
