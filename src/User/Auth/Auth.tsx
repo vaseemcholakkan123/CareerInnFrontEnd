@@ -111,7 +111,7 @@ const ValidateUsernameAndEmail = async (query: string, query2: string) => {
         AuthToastFailure('Username should only contain 9 characters!')
         return Promise.reject()
     }
-    if(query.trim()){
+    if(query.includes(" ")){
         AuthToastFailure('Username should not contain space!')
         return Promise.reject()
     }
