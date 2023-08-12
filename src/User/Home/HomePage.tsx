@@ -10,7 +10,6 @@ import { Routes,Route } from "react-router-dom"
 import { useNavigate } from 'react-router-dom';
 import JobRight from '../SideBars/right/JobRight/JobRight';
 import Jobs from '../Splits/Jobs/Jobs';
-import { useLocation } from 'react-router-dom';
 import Notification from '../Splits/Notification/Notification';
 import DifferentProfile from '../Splits/Profile/DiffProfile/DifferentProfile';
 import SavedPost from '../Splits/Posts/SavedPost';
@@ -24,7 +23,6 @@ import SearchParent from '../Splits/SearchResults/SearchParent';
 import Premium from '../Splits/Premium/Premium';
 
 function HomePage() {
-  const routerstate = useLocation()
   const [activeLayout, setActiveLayout] = useState('posts')
   const router = useNavigate()
   const [NotificationCount, SetNotificationCount] = useState(0)

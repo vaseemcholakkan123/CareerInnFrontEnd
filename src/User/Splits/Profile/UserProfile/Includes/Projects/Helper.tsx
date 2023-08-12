@@ -66,8 +66,6 @@ export async function update_project(form:ProjectForm,project_id:number){
         return Promise.resolve(result)
     }
     catch (e) {
-        console.log(e);
-        
         return Promise.reject(e)
     }
 }

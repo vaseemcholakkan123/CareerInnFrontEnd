@@ -1,4 +1,4 @@
-import {  useLocation, useNavigate } from 'react-router-dom'
+import {  useLocation } from 'react-router-dom'
 import { validation } from '../../User/Splits/Profile/UserProfile/Includes/Projects/Helper'
 import { getEndpoint, get_user_media, get_user_screen, info, servers, toggle_audio, toggle_video } from './Helper'
 import './interview.css'
@@ -18,7 +18,6 @@ function Interview() {
     const routerStates = useLocation()
     const [SocketUse, SetSocket] = useState<WebSocket>()
     const user = useSelector((state: RootState) => state.logged_user.value)
-    const router = useNavigate()
     const [loading, Setloading] = useState(true)
     const [VideoMuted, SetvideoMuted] = useState(false)
     const [AudioMuted, SetAudioMuted] = useState(false)

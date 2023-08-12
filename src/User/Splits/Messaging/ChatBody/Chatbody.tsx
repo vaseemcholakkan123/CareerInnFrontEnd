@@ -35,7 +35,6 @@ function Chatbody({ usr , SetActiveLayout }: { usr : user , SetActiveLayout :  D
         const socket = new WebSocket(get_chat_endpoint(usr.id))
         chatBody.current!.scrollTop = chatBody.current!.scrollHeight + 90
         socket.onopen = () => {
-            console.log('Socket connected');
             localsocket.current = socket
         }
 

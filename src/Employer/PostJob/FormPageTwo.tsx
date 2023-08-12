@@ -25,7 +25,6 @@ function FormPageTwo({ SetActiveFormPage, SetJobForm, job_form, EditJob }: { Set
                     SetSkills([{ title: `No skill for '${skill_query}'`, id: 0 }])
                     return
                 }
-                console.log(res.data);
 
                 SetSkills(
                     selectedskills[0] ?
@@ -286,18 +285,17 @@ function FormPageTwo({ SetActiveFormPage, SetJobForm, job_form, EditJob }: { Set
                     EditJob ?
 
                         update_job(job_form,EditJob.id)
-                            .then(res => {
+                            .then(() => {
                                 setTimeout(() => { window.location.href = '/employer' }, 1500)
                             })
-                            .catch(e => {
-                                console.log(e.response);
-
+                            .catch(() => {
+                                validation("Unknown error")
                             })
 
                         :
 
                         post_job(job_form)
-                            .then(res => {
+                            .then(() => {
                                 setTimeout(() => { window.location.href = '/employer' }, 1500)
                             })
 

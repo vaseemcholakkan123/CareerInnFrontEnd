@@ -130,8 +130,6 @@ function SearchResults({ type, content, query, loading, ChangeType }: { ChangeTy
                 {
                     type == 'jobs' && content ?
                         (content as job[]).map(job => {
-                            console.log(job);
-
                             return (
                                 <div key={job.id} className='job-card app-shadow r-7 p-2' onClick={() => router('/jobs', { state: { 'job_id': job.id } })}>
                                     <img src={job.company.logo} width={78} height={78} className='resize-phone rounded-circle' alt="company_logo" />

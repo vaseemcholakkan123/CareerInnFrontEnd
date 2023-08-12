@@ -1,5 +1,5 @@
 import './../Profile.css'
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../../AppMain/AppConfig/Redux/store'
 import default_user_image from '../../../../AppMain/AppConfig/AppConstants'
@@ -15,6 +15,7 @@ import Connections from './Layouts/Connections/Connections'
 import ProfPost from './Layouts/Posts/ProfPost'
 import ProfJobs from './Layouts/Jobs/ProfJobs'
 import { Route, Routes, useNavigate } from 'react-router-dom'
+import { validation } from './Includes/Projects/Helper'
 
 function UserProfile() {
   const user = useSelector((state: RootState) => state.logged_user.value)
@@ -23,30 +24,28 @@ function UserProfile() {
   const ProfileImage = useRef<HTMLImageElement>(null)
   const dispatcher = useDispatch()
   const [profForm, setProfForm] = useState<detailForm>({ username: user.username, info: user.info, mobile: user.mobile, location: user.location })
-  const [ActiveLayout, SetActiveLayout] = useState('main')
   const router = useNavigate()
 
 
-  useEffect(() => {
-    console.log(user,'[[[[');
+  // useEffect(() => {
     
-    if (window.location.pathname.split('/')[1] == 'profile' && !window.location.pathname.split('/')[2]) {
-      SetActiveLayout('main')
-    } else SetActiveLayout('main')
+  //   if (window.location.pathname.split('/')[1] == 'profile' && !window.location.pathname.split('/')[2]) {
+  //     SetActiveLayout('main')
+  //   } else SetActiveLayout('main')
 
-    if (window.location.pathname.split('/')[2] == 'posts') {
-      SetActiveLayout('posts')
-    }
+  //   if (window.location.pathname.split('/')[2] == 'posts') {
+  //     SetActiveLayout('posts')
+  //   }
 
-    else if (window.location.pathname.split('/')[2] == 'connections') {
-      SetActiveLayout('connections')
-    }
+  //   else if (window.location.pathname.split('/')[2] == 'connections') {
+  //     SetActiveLayout('connections')
+  //   }
 
-    else if (window.location.pathname.split('/')[2] == 'applications') {
-      SetActiveLayout('jobs')
-    } else SetActiveLayout('main')
+  //   else if (window.location.pathname.split('/')[2] == 'applications') {
+  //     SetActiveLayout('jobs')
+  //   } else SetActiveLayout('main')
 
-  }, [window.location.pathname])
+  // }, [window.location.pathname])
 
   return (
     <div className='profile-main-container mb-5 pb-md-3 pb-0'>
@@ -231,9 +230,8 @@ function UserProfile() {
                           dispatcher(Adduser(res?.data.user));
                           profileModalClose.current!.click();
                         })
-                          .catch(err => {
-                            console.log(err);
-
+                          .catch(() => {
+                            validation("Unknown Error")
                           })
                       }}
 
@@ -255,7 +253,7 @@ function UserProfile() {
                   <path d="M12 16v6H3v-6a3 3 0 013-3h3a3 3 0 013 3zm5.5-3A3.5 3.5 0 1014 9.5a3.5 3.5 0 003.5 3.5zm1 2h-2a2.5 2.5 0 00-2.5 2.5V22h7v-4.5a2.5 2.5 0 00-2.5-2.5zM7.5 2A4.5 4.5 0 1012 6.5 4.49 4.49 0 007.5 2z"></path>
                 </svg>
 
-                <div className='ms-2 app-font info' onClick={() => { SetActiveLayout('connections'); router('/profile/connections') }}>
+                <div className='ms-2 app-font info' onClick={() => { router('/profile/connections') }}>
                   <p className="weight-700">My Network</p>
                   <p>See and manage your connections</p>
                 </div>
@@ -265,7 +263,7 @@ function UserProfile() {
               <div className="connections-info">
                 <svg width="27px" height="27px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs></defs><rect className='a' x="5.5" y="5.5" width="15.8571" height="15.8571" /><rect className='a' x="27.5004" y="6.3575" width="14.1421" height="14.1421" transform="translate(0.6303 28.3788) rotate(-45)" /><rect className='a' x="5.5" y="26.6429" width="15.8571" height="15.8571" /><rect className='a' x="26.6429" y="26.6429" width="15.8571" height="15.8571" /></svg>
 
-                <div className='ms-2 app-font info' onClick={() => { SetActiveLayout('posts'); router('/profile/posts') }}>
+                <div className='ms-2 app-font info' onClick={() => {  router('/profile/posts') }}>
                   <p className="weight-700">Activity</p>
                   <p>See and manage your posts</p>
                 </div>
@@ -276,7 +274,7 @@ function UserProfile() {
                   <path d="M12 16v6H3v-6a3 3 0 013-3h3a3 3 0 013 3zm5.5-3A3.5 3.5 0 1014 9.5a3.5 3.5 0 003.5 3.5zm1 2h-2a2.5 2.5 0 00-2.5 2.5V22h7v-4.5a2.5 2.5 0 00-2.5-2.5zM7.5 2A4.5 4.5 0 1012 6.5 4.49 4.49 0 007.5 2z"></path>
                 </svg>
 
-                <div className='ms-2 app-font info' onClick={() => { SetActiveLayout('jobs'); router('/profile/applications') }}>
+                <div className='ms-2 app-font info' onClick={() => { router('/profile/applications') }}>
                   <p className="weight-700">Applications</p>
                   <p>See and manage applied jobs</p>
                 </div>

@@ -1,6 +1,5 @@
 
 
-import React from 'react'
 import default_user_image from '../../../AppMain/AppConfig/AppConstants'
 import { post } from '../../../User/UserConfig/Constants'
 import { RootState } from '../../../AppMain/AppConfig/Redux/store'

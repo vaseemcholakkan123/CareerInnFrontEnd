@@ -2,7 +2,6 @@ import default_user_image, { BASE_IMAGE_URL } from '../../AppMain/AppConfig/AppC
 import CarreerInnAxios from '../../AppMain/AppConfig/AxiosConfig'
 import { debounce } from '../../User/Splits/Profile/Helper'
 import { get_users, user } from '../../User/Splits/Profile/UserProfile/Includes/Jobs/Helper'
-import { updateTimeSince } from '../../User/UserConfig/Helper'
 import { add_new_recruiter, remove_recruiter } from './Helper'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../AppMain/AppConfig/Redux/store'

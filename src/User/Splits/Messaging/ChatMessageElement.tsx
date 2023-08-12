@@ -1,8 +1,6 @@
 import { updateTimeSince } from '../../UserConfig/Helper'
-import { get_append_time } from './Helper'
 import './message.css'
 
-import React from 'react'
 
 function ChatMessageElement( {senderID ,msg , userID , datetime , sent_by_name ,profile} :{profile : string , msg:string,userID:Number|null,senderID:Number,sent_by_name:string,datetime:string}) {
     return (

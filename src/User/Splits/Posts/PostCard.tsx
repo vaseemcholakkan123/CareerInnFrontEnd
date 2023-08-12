@@ -3,7 +3,7 @@ import './Posts.css'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../AppMain/AppConfig/Redux/store'
 import parse from 'html-react-parser'
-import { useEffect, useState, useRef } from 'react'
+import { useState } from 'react'
 import { Element } from 'domhandler'
 import CommentsCard from './CommentsCard'
 import { comment, post } from '../../UserConfig/Constants'
@@ -199,7 +199,6 @@ function PostCard({ post, deletepost, updatePost, reportPost, updateSaved }: { p
                     setvisible(!ShowComment)
                     get_comments(post.id, NextUrl)
                         .then((data) => {
-                            console.log(data, '[[[[');
 
                             if (data.count == 0) Setnocomments(true)
 

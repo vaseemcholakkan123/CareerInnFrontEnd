@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Posts from '../../../Posts/Posts'
 
 function DiffPost({id} :{id:number}) {

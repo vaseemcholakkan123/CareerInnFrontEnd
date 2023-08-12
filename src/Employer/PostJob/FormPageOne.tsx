@@ -1,9 +1,8 @@
-import { BASE_URL } from '../../AppMain/AppConfig/AppConstants'
-import { jobCompany } from '../ListJob/Helper'
+
 import { add_job } from './Helper'
 import './job.css'
 
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
 
 function FormPageOne({ SetActiveFormPage, SetJobForm, job_form }: { job_form: add_job, SetActiveFormPage: Dispatch<SetStateAction<string>>, SetJobForm: Dispatch<SetStateAction<add_job>> }) {

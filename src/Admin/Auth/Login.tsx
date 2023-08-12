@@ -3,7 +3,7 @@ import SimpleNav from '../../User/Navbar/SimpleNav';
 import { PasswordTrigger } from '../../User/UserConfig/Helper';
 import './../admin.css'
 
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { HandleLogin } from '../../User/Auth/Auth';
 import { useDispatch } from 'react-redux';
 import { Adduser } from '../../AppMain/AppConfig/Redux/userReducer';

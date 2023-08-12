@@ -1,4 +1,5 @@
 import CarreerInnAxios from '../../../../../../AppMain/AppConfig/AxiosConfig'
+import { validation } from '../../Includes/Projects/Helper'
 import './../layouts.css'
 
 import { useEffect, useState } from 'react'
@@ -22,8 +23,8 @@ function ProfJobs() {
                 else setNextUrl('')
 
             })
-            .catch(e => {
-                console.log(e.response);
+            .catch(() => {
+               validation("Unkown error")
 
             })
     }, [loadNext])

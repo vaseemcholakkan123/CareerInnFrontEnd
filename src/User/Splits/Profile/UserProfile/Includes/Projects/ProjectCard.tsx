@@ -1,6 +1,5 @@
 import './../includes.css'
 
-import React from 'react'
 import { axios_delete_project, project } from './Helper'
 
 

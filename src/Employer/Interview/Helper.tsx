@@ -1,6 +1,4 @@
 import { toast } from "react-toastify"
-import { BASE_URL } from "../../AppMain/AppConfig/AppConstants"
-import { validation } from "../../User/Splits/Profile/UserProfile/Includes/Projects/Helper"
 
 
 export async function get_user_media() {

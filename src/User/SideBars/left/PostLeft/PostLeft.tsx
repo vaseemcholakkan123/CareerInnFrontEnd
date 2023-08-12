@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { RootState } from '../../../../AppMain/AppConfig/Redux/store'
 import { useSelector } from 'react-redux'
 import default_user_image from '../../../../AppMain/AppConfig/AppConstants'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import verified_image from '../../../../AppMain/AppConfig/vaerifiedImage'
 import CarreerInnAxios from '../../../../AppMain/AppConfig/AxiosConfig'
 import { validation } from '../../../Splits/Profile/UserProfile/Includes/Projects/Helper'
@@ -16,7 +16,6 @@ function PostLeft() {
     useEffect(() => {
         CarreerInnAxios.get('user/get-premium-validity/')
             .then(res => {
-                console.log(res);
                 if (res.data == 'premium_ended') {
                     validation("Premium Ended ,Login again")
                     localStorage.clear()

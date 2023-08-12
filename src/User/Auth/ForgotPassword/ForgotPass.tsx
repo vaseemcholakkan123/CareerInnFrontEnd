@@ -4,7 +4,6 @@ import './../auth.css'
 import { PasswordTrigger } from '../../UserConfig/Helper'
 import { useState, useRef, useEffect } from 'react'
 import { success } from '../../Splits/Profile/UserProfile/Includes/Jobs/Helper'
-import { validation } from '../../Splits/Profile/UserProfile/Includes/Projects/Helper'
 import { useNavigate } from 'react-router-dom'
 
 function ForgotPass() {
@@ -105,7 +104,7 @@ function ForgotPass() {
                                     </button>
                                     {
                                         resendOTP && delay == 0 ?
-                                            <button disabled={formSubmit} className="btn-2 auth-btn text-center h-scale c-pointer" onClick={(e) => {
+                                            <button disabled={formSubmit} className="btn-2 auth-btn text-center h-scale c-pointer" onClick={() => {
                                                 setResendLoading(true)
                                                 SetDisabled(true)
                                                 reset_pass_otp(null, username)

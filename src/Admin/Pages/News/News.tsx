@@ -5,7 +5,7 @@ import { updateTimeSince } from '../../../User/UserConfig/Helper'
 import { NewsType, add_news, delete_news, update_news } from '../Helper'
 import './../../admin.css'
 
-import { useEffect, useCallback, useState, useRef } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 function News() {
     const [Allnews, SetNews] = useState<NewsType[]>([])

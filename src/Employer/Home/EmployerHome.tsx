@@ -10,7 +10,6 @@ import { useState } from 'react'
 
 function EmployerHome() {
 
-  const [ActiveLayout, setActiveLayout] = useState('jobs')
   const [Showmenu, SetshowMenu] = useState(false)
 
   return (

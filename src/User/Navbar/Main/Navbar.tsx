@@ -3,10 +3,8 @@ import { RootState } from '../../../AppMain/AppConfig/Redux/store'
 import { useSelector } from 'react-redux'
 import default_user_image from '../../../AppMain/AppConfig/AppConstants'
 import { useState, useRef, useEffect, Dispatch, SetStateAction } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { logout } from '../../Auth/Auth'
-import { useDispatch } from 'react-redux'
-import { Adduser } from '../../../AppMain/AppConfig/Redux/userReducer'
 import { check_continue } from '../../Splits/Profile/UserProfile/Includes/Jobs/Helper'
 import { validation } from '../../Splits/Profile/UserProfile/Includes/Projects/Helper'
 import { debounce } from '../../Splits/Profile/Helper'
@@ -41,7 +39,6 @@ function Navbar({ SetActiveLayout, ActiveLayout, NotificationCount }: { Notifica
   useEffect(() => {
     CarreerInnAxios.get('user/get-premium-validity/')
       .then(res => {
-        console.log(res);
         if (res.data == 'premium_ended') {
           validation("Premium Ended ,Login again")
           localStorage.clear()

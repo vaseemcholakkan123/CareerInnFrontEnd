@@ -127,8 +127,6 @@ const ValidateUsernameAndEmail = async (query: string, query2: string) => {
     } catch (err) {
 
         if (axios.isAxiosError(err)) {
-            console.log(err);
-
             AuthToastFailure(err.response?.data?.message || 'An error occurred');
             return Promise.reject()
         }
@@ -504,7 +502,6 @@ export async function change_password(formEvent:React.SyntheticEvent,username:st
         if (res) return Promise.resolve()
         
     } catch (error) {
-        console.log(error);
         
         return Promise.reject()
     }

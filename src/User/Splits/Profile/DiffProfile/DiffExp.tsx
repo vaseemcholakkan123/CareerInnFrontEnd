@@ -1,7 +1,6 @@
 import './../UserProfile/Includes/includes.css'
 
 
-import React from 'react'
 import DiffExpCard from './DiffExpCard'
 import { Experiencetype } from '../UserProfile/Includes/Experience/Helper'
 

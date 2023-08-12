@@ -1,7 +1,6 @@
 import { Educationtype, axios_delete_education } from './Helper'
 import './edu.css'
 
-import React from 'react'
 
 function EduCard( {education, delete_edu_from_list , update_edu_from_list} : {education :Educationtype , delete_edu_from_list : (x:number) => void , update_edu_from_list : (x:number) => void } ) {
   return (

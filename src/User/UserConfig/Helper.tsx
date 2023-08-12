@@ -1,7 +1,8 @@
 import { toast } from "react-toastify"
-import { comment, postform } from "./Constants"
+import {  postform } from "./Constants"
 import CarreerInnAxios from "../../AppMain/AppConfig/AxiosConfig"
 import React from "react"
+import { validation } from "../Splits/Profile/UserProfile/Includes/Projects/Helper"
 
 
 export const PasswordTrigger = (input:HTMLInputElement)=>{
@@ -106,8 +107,6 @@ export async function likePost(post_id:number){
         await CarreerInnAxios.post(`user/like-post/${post_id}`)
         return Promise.resolve()
     } catch (error) {
-        console.log(error);
-        
         return Promise.reject()
     }
 }
@@ -161,7 +160,7 @@ export async function delete_post(post_id:number){
         PostToastSuccess('Post Deleted')
     }
     catch(err){
-        console.log(err);
+        validation("Unknnown Error")
     }
 }
 

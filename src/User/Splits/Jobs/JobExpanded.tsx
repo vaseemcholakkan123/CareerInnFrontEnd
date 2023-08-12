@@ -267,7 +267,7 @@ function JobExpanded({ job, SetActiveLayout }: { job: job, SetActiveLayout: Disp
                                             <svg width="21" height="12" viewBox="0 0 21 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M5.72809 11.5645C4.13115 11.5343 2.78772 10.9533 1.69779 9.82139C0.607854 8.6895 0.0779681 7.32508 0.108128 5.72814C0.138287 4.13121 0.719314 2.78777 1.85121 1.69784C2.9831 0.607908 4.34752 0.0780214 5.94445 0.108181L16.88 0.314708C18.0256 0.336345 18.9987 0.76278 19.7991 1.59401C20.5995 2.42525 20.9889 3.41368 20.9672 4.55931C20.9456 5.70494 20.5192 6.67796 19.6879 7.47838C18.8567 8.2788 17.8683 8.66819 16.7226 8.64656L6.82858 8.4597C6.09954 8.44593 5.48809 8.1826 4.99421 7.66971C4.50034 7.15682 4.26028 6.53586 4.27405 5.80682C4.28782 5.07779 4.55115 4.46633 5.06404 3.97245C5.57693 3.47858 6.19789 3.23852 6.92693 3.25229L16.821 3.43915L16.7915 5.00137L6.89742 4.81451C6.60234 4.80894 6.3531 4.90408 6.14971 5.09993C5.94633 5.29577 5.84185 5.54124 5.83627 5.83633C5.8307 6.13141 5.92584 6.38065 6.12168 6.58404C6.31753 6.78742 6.563 6.8919 6.85808 6.89748L16.7522 7.08433C17.4812 7.0981 18.1022 6.85805 18.615 6.36417C19.1279 5.8703 19.3913 5.25884 19.405 4.5298C19.4188 3.80077 19.1787 3.17981 18.6849 2.66692C18.191 2.15403 17.5795 1.8907 16.8505 1.87693L5.91495 1.6704C4.76932 1.64877 3.78089 2.03816 2.94965 2.83858C2.11842 3.639 1.69199 4.61202 1.67035 5.75765C1.64871 6.90328 2.0381 7.89171 2.83852 8.72294C3.63894 9.55418 4.61197 9.98061 5.7576 10.0022L16.6931 10.2088L16.6636 11.771L5.72809 11.5645Z" fill="black" />
                                             </svg>
-                                            <p>{application_form.resume ? `Attached : ${application_form.resume.name}` : user.resume ? user.resume.split('/')[1] : 'Attach Resume'}</p>
+                                            <p>{application_form.resume ? `Attached : ${application_form.resume.name}` : user.resume ? (user.resume as string).split('/')[1] : 'Attach Resume'}</p>
                                         </label>
 
                                         <input className='d-none' id='resume' type="file" accept="application/pdf" onChange={e => {
@@ -315,8 +315,6 @@ function JobExpanded({ job, SetActiveLayout }: { job: job, SetActiveLayout: Disp
                                                 }
                                             })
                                             .catch(err => {
-                                                console.log(err);
-
                                                 if (err.response.data.applied) {
                                                     validation('You have already applied for this job')
                                                     modalCloser.current!.click()

@@ -2,8 +2,6 @@ import { useNavigate } from 'react-router-dom'
 import './../../admin.css'
 
 import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { RootState } from '../../../AppMain/AppConfig/Redux/store'
 import { check_admin } from '../Helper'
 import { validation } from '../../../User/Splits/Profile/UserProfile/Includes/Projects/Helper'
 import AdminSidebar from '../Sidebar/SideBar'

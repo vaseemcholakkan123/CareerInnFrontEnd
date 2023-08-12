@@ -1,6 +1,5 @@
 import './s.css'
 
-import React from 'react'
 
 function JobRight() {
   return (

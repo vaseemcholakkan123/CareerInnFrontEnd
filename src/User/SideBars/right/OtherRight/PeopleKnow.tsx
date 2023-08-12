@@ -18,7 +18,6 @@ function PeopleKnow() {
         CarreerInnAxios.get('user/people-knows/' + `?${nextUrl}`)
             .then(res => {
                 SetResolved(true)
-                console.log(res.data);
                 Setpeople([...people,...res.data.results])
 
                 if (res.data.next) setNextUrl(res.data.next.split('?')[1])

@@ -5,6 +5,7 @@ import {useState,useRef} from 'react'
 import { check_continue, department, get_departments, get_users, registerComapnyForm, register_company, user } from './Helper'
 import default_user_image, { BASE_IMAGE_URL } from '../../../../../../AppMain/AppConfig/AppConstants'
 import { useNavigate } from 'react-router-dom'
+import { validation } from '../Projects/Helper'
 
 function Jobs() {
   const [departments,Setdepartments] = useState<department[]>([])
@@ -273,9 +274,8 @@ function Jobs() {
                       modalCloser.current!.click()
                       router('/employer')
                     })
-                    .catch(e=>{
-                      console.log(e);
-                       
+                    .catch(()=>{
+                      validation("Unknown Error")
                     })
                     
                   }}>Register & Continue</button>

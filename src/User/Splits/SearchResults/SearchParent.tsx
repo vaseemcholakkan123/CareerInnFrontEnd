@@ -51,8 +51,6 @@ function SearchParent() {
                     break;
 
                 default:
-                    console.log('next worked defa');
-
                     break;
             }
         })

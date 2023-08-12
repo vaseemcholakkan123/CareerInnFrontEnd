@@ -1,9 +1,6 @@
 import Posts from './Posts'
 import './Posts.css'
 
-
-import {useEffect} from 'react'
-
 function SavedPost() {
 
     
