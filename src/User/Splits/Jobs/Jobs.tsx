@@ -7,7 +7,7 @@ import './job.css'
 import { useSelector } from 'react-redux'
 import { useEffect, useRef, useState } from 'react'
 import { RootState } from '../../../AppMain/AppConfig/Redux/store'
-import { inform, validation } from '../Profile/UserProfile/Includes/Projects/Helper'
+import { inform } from '../Profile/UserProfile/Includes/Projects/Helper'
 import { skill } from '../Profile/UserProfile/Includes/Skills/helper'
 import { debounce } from '../Profile/Helper'
 import { get_skills } from '../../../Employer/PostJob/Helper'
@@ -114,7 +114,7 @@ function Jobs() {
 
 
             })
-            .catch(err => {
+            .catch(() => {
                 Setresolved(true)
 
             })

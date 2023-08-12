@@ -48,7 +48,7 @@ function PaymentPage() {
                 className="btn-1 pb-2 pt-2 w-f-content ms-auto mt-3 me-md-3 me-2"
                 style={{'float':'right'}}
                 disabled={redirecting}
-                onClick={e => {
+                onClick={() => {
                     Setredirecting(true)
                     CarreerInnAxios.post('user/get-payment-session/', { 'plan_type': SelectedPlan, 'email': user.email })
                         .then(res => {

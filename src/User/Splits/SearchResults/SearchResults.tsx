@@ -5,7 +5,7 @@ import { job } from '../Jobs/Helper'
 import { company, user } from '../Profile/UserProfile/Includes/Jobs/Helper'
 import './search.css'
 
-import { useEffect, useState, useRef, Dispatch, SetStateAction } from 'react'
+import {  useState, useRef, Dispatch, SetStateAction } from 'react'
 import { updateTimeSince } from '../../UserConfig/Helper'
 import { debounce } from '../Profile/Helper'
 import { RootState } from '../../../AppMain/AppConfig/Redux/store'

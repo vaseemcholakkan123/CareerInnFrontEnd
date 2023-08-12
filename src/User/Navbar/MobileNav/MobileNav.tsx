@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import './../../Navbar/Main/nav.css'
 
 
-import { useState, Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
 function MobileNav({ SetActiveLayout, ActiveLayout ,NotificationCount }: { NotificationCount : number , SetActiveLayout: Dispatch<SetStateAction<string>>, ActiveLayout: string }) {
     const router = useNavigate()
