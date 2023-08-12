@@ -13,7 +13,7 @@ export const BASE_IMAGE_URL = 'https://moddroid.tk'
 var location = window.location
 let wsStart = 'ws://'
 
-if (location.protocol == 'https') wsStart = 'wss://'
+if (location.protocol == 'https:') wsStart = 'wss://'
 
 export const NOTIFICATION_END_POINT = wsStart + 'moddroid.tk/careerinn-api/notifications/'
 
@@ -22,6 +22,6 @@ export function get_chat_endpoint(target_id: number) {
     var location = window.location
     let wsStart = 'ws://'
 
-    if (location.protocol == 'https') wsStart = 'wss://'
+    if (location.protocol == 'https:') wsStart = 'wss://'
     return wsStart + 'moddroid.tk/careerinn-api/chat/' + `?token=${localStorage.getItem('access-token')}&target=${target_id}`
 }
