@@ -33,7 +33,6 @@ function Chatbody({ usr , SetActiveLayout }: { usr : user , SetActiveLayout :  D
             })
 
         const socket = new WebSocket(get_chat_endpoint(usr.id))
-        chatBody.current!.scrollTop = chatBody.current!.scrollHeight + 90
         socket.onopen = () => {
             localsocket.current = socket
         }
@@ -42,10 +41,10 @@ function Chatbody({ usr , SetActiveLayout }: { usr : user , SetActiveLayout :  D
             const dmp = JSON.parse(event.data)
             const data: chat_message = JSON.parse(dmp.message)
             SetChatMessages(ChatMessages => [...ChatMessages, { ...data, user: { ...data.user, profile: BASE_IMAGE_URL + data.user.profile } }])
-            chatBody.current!.scrollTop = chatBody.current!.scrollHeight
+            chatBody.current!.scrollIntoView({ behavior: 'smooth' });
 
         }
-
+        chatBody.current!.scrollIntoView({ behavior: 'smooth' })
         return () => {
             SetChatMessages([])
             Setresolved(false)

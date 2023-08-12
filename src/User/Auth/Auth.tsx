@@ -43,7 +43,6 @@ export const HandleLogin = async (formEvent: React.SyntheticEvent, SetLoading: D
     if (validateLogin(usernameValue, passwordValue)) {
         try {
             const response = await CarreerInnAxios.post(adminLog ? 'admin/login/' : 'user/login/', { "username": usernameValue, "password": passwordValue });
-            SetLoading(false);
  
             if(adminLog) localStorage.setItem('admin','true')
            
